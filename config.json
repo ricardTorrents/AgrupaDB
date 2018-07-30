@@ -1,0 +1,11 @@
+{
+"express":{
+	"port":3000
+	},
+"postgres":{
+	"db":"agrupacio",
+	"user":"torrents",
+	"password":"agrupa",
+	"host":"192.168.1.25"
+	}
+}

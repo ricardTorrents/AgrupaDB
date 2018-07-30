@@ -1,0 +1,148 @@
+<html>
+
+<head>
+
+    <title id="titulHead">AgrupaDB</title>
+    <meta charset="UTF-8">
+
+    <script src="javascripts/llibreries/jquery-3.3.1.min.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script> -->
+	 <script src="javascripts/llibreries/bootstrap.min.js"></script>
+	 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	 crossorigin="anonymous"></script> -->
+	 <script src="javascripts/llibreries/fontawesome.js"></script>
+	 <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+	 crossorigin="anonymous"></script> -->
+	 <link rel="stylesheet" href="stylesheets/llibreries/bootstrap.min.css">
+	<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	 crossorigin="anonymous"> -->
+	 <script src="javascripts/llibreries/solid.js"></script>
+	<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+	 crossorigin="anonymous"></script> -->
+	 <link rel="stylesheet" href="stylesheets/llibreries/fonts.css">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Rock+Salt|Roboto" rel="stylesheet"> -->
+	<script src="javascripts/llibreries/vue.min.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
+	<!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<link rel="stylesheet" href="stylesheets/style.css">
+    <script src="/javascripts/pagBalls.js"></script>
+
+</head>
+
+<body>
+    <div id="vuepagBalls">
+        <div id="header" class="col-md-12">
+            <strong> Agrupacó de Balls Populars </strong>
+        </div>
+        <div id="pagBalls">
+
+            <div id="llistaBalls" class="col-md-2">
+                <div id="capsLBalls" class="row">
+                    <div calss="retorna" class="col-md-1" v-on:click="retornaInici">
+                        <i class='fas fa-arrow-left' style="cursor:pointer;"></i>
+                    </div>
+                    <strong class="col-md-10">Balls Agrupació de Balls Populars</strong>
+                    <div id="afegeixBall"  v-on:click="nouBall" class="col-md-1">
+                        <i class='fas fa-plus' style="cursor:pointer;"></i>
+                    </div>
+                </div>
+
+                <div id="lBalls">
+                    <div class=" row ball " v-on:click="mostraDetallBall(ball)" style="cursor: pointer;" v-for="ball in lballs">
+                        <div  class=" col-md-4">
+                            {{ball.codi_ball}}
+                        </div>
+                        <div  class=" col-md-4">
+                            {{ball.nom}}
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div id="detallBall" class="col-md-6">
+                <div id="ballDetall">
+                    <div id="capsDetallBall">
+                        <strong  style="display: inline-block; width: 60%;"> {{ballSeleccionat.nom}}</strong>
+                        <div v-on:click="modificaball" style="cursor: pointer;">
+                            <i class="fas fa-edit"></i>
+                    </div>
+                    </div>
+                    <div class="row campDetall">
+
+                        <strong class="col-sm-7">Numero Ball:</strong>
+                        <div > {{ballSeleccionat.codi_ball}}</div>
+
+                    </div>
+
+                    <div class="row campDetall">
+
+                        <strong class="col-sm-7">Participants</strong>
+                        <div v-bind:id="ballSeleccionat.numero_participants+ballSeleccionat.codiBall">
+                                {{ballSeleccionat.numparticipants}}
+                        </div>
+                    </div>
+                    <div class="row campDetall">
+
+                        <strong class="col-sm-7">Sexe</strong>
+                        <div >
+                                {{ballSeleccionat.sexe}}
+                        </div>
+                    </div>
+                    <div class="row campDetall">
+
+                        <strong class="col-sm-7">Edat Minima</strong>
+                        <div >
+                                {{ballSeleccionat.edat_minima}}
+                        </div>
+                    </div>
+                    <div class="row campDetall">
+
+                        <strong class="col-sm-7">Edat Maxima</strong>
+                        <div >
+                            {{ballSeleccionat.edat_maxima}}
+                        </div>
+                    </div>
+                    <div id="balladors">
+                        <strong>BALLADORS</strong>
+                        <div id=llistaBalladors >
+                            <div class=" row  " v-for="ballador in lballadors">
+                                <div class=" col-md-4">
+                                    {{ballador.numerosoci}}
+                                </div>
+                                <div class=" col-md-4">
+                                    {{ballador.nom}}  {{ballador.cognoms}}
+                                </div>
+                                <div class=" col-md-4">
+                                    {{ballador.dni}}
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+                    <div id="lespera">
+                        <strong>Llistes Espera</strong>
+                        <div id=llistaEspera >
+                            <div class=" row  " v-for="element in lEspera">
+                                <div class=" col-md-4">
+                                    {{element.nom}}
+                                </div>
+                                <div class=" col-md-4">
+                                    {{element.posicio}}  
+                                </div>
+                                <div class=" col-md-4">
+                                    {{element.data}}
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

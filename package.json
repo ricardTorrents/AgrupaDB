@@ -1,0 +1,21 @@
+{
+  "name": "agrupadb",
+  "version": "1.0.0",
+  "description": "Base dades Agrupacio Balls Populars",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Ricard Torrents",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "connect": "^3.6.6",
+    "express": "",
+    "node-sass": "",
+    "node-sass-middleware": "",
+    "pg": "",
+    "pg-promise-simple": ""
+  }
+}

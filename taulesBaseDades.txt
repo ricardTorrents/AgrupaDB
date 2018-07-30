@@ -1,0 +1,37 @@
+		
+CREATE TABLE ball (codi_ball serial NOT NULL PRIMARY KEY,nom varchar(20) NOT NULL,sexe varchar(1) NOT NULL, numParticipants int(2) NOT NULL,edat_minima int(2),edat_maxima int(2));
+INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Diables Petits','M',20,8,15);
+INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Cabreta','M',20,8,15);
+INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Presumida','D',20,16,100);
+INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Boja','H',20,16,100);
+INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Cercolets','M',20,8,15);
+INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Panderos','M',20,15,25);
+INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Nans','M',20,15,25);
+INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Serrallonga','M',12,16,100);
+INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Bastons Noies','D',20,18,25);
+INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Bastons Nois','H',20,18,25);
+INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Bastons Dones','D',20,25,100);
+INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Bastons Homes','H',20,25,100);
+INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Gitanes Homes','H',5,25,100);
+INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Gitanes','D',20,25,100);
+INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Valencians','M',40,8,100);
+
+
+
+CREATE TABLE soci (dni varchar(9) NOT NULL PRIMARY KEY,numeroSoci serial NOT NULL UNIQUE,nom varchar(20) NOT NULL,cognoms varchar(50) NOT NULL,data_naixement date NOT NULL,adreça varchar(100) NOT NULL,ciutat varchar(50) NOT NULL,email varchar(20) NOT NULL,telefon varchar(9) NOT NULL,telefon2 varchar(9),sexe varchar(1) NOT NULL,codi_ball  int REFERENCES ball(codi_ball));
+
+INSERT INTO soci(dni,nom,cognoms,data_naixement,adreça,ciutat,email,telefon,telefon2,sexe) values('47633129Z','Ricard','Torrents Cunill','1992-01-27','Av cubells 58','Vilanova i la Geltru','torrents_27@hotmail.com','690128171','938154475','H');
+
+
+CREATE TABLE balladors(dni varchar(9) NOT NULL REFERENCES soci(dni),codi_ball int NOT NULL REFERENCES ball(codi_ball), PRIMARY KEY (dni,codi_ball));
+
+INSERCIONS
+BEGIN TRANSACTION; 
+INSERT INTO balladors (dni,codi_ball) values('69048573L',1);
+BEGIN
+INSERT 0 1
+agrupacio=> UPDATE soci SET codi_ball=1 WHERE dni='69048573L';
+UPDATE 1
+agrupacio=> COMMIT TRANSACTION 
+
+CREATE TABLE llistaEspera (dni varchar(9) NOT NULL REFERENCES soci(dni),codi_ball int NOT NULL REFERENCES ball(codi_ball), posicio int NOT NULL, data date NOT NULL,PRIMARY KEY (dni,codi_ball));

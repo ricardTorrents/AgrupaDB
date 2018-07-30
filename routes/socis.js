@@ -1,3 +1,6 @@
+/**
+ * Funcions per la accedir a la taula socis
+ */
 express = require('express');
 bodyParser=require('body-parser')
 router=express.Router();
@@ -7,6 +10,9 @@ router.use(function timeLog(req,res,next){
 	console.log('Time: ',Date.now())
 	next()
 })
+/**
+ * Obte tots els socis 
+ */
 router.get('/',function(req,res){
 	db.query("SELECT * FROM soci ORDER BY numeroSoci").then(function(result){
 		console.log(result.rowCount)
@@ -25,7 +31,9 @@ router.get('/',function(req,res){
 	})
 	
 });
-
+/**
+ * Obte un soci segons el seu numero de soci
+ */
 router.get('/:numerosoci',function(req,res){
 	numerosoci=req.params.numerosoci
 	
@@ -36,7 +44,9 @@ router.get('/:numerosoci',function(req,res){
 		console.log(err);
 	})
 });
-
+/**
+ * Modifica un soci apartir del seu numerodesoci
+ */
 router.put('/:numerosoci',function(req,res){
 	console.log(req.body)
 	numerosoci=req.params.numerosoci
@@ -49,6 +59,9 @@ router.put('/:numerosoci',function(req,res){
 	})
 	
 })
+/**
+ * Insereix un nou soci
+ */
 router.post('/',function(req,res){
 	console.log(req.body.data_naixement)
 	
@@ -59,6 +72,9 @@ router.post('/',function(req,res){
 	})
 	res.send("200ok")
 })
+/**
+ * Elimina un soci i actualitza els numeros de socis de la resta de socis.
+ */
 router.delete('/:numerosoci',function(req,res){
 	var numerosoci=parseInt(req.params.numerosoci)
 		

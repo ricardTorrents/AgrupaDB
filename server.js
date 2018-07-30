@@ -7,6 +7,9 @@ var routes=require('./routes/routes');
 var pg=require('pg-promise-simple');
 var bodyParser=require('body-parser')
 var connString="postgres://torrents:agrupa@localhost:5432/agrupacio";
+/**
+ * Estableix connexio amb la base de dades 
+ */
 pg.connect(connString).then(function(connection){
 	global.db=connection.client;
 }).then(function(){
@@ -50,6 +53,8 @@ app.get('/nouBall',function(req,res){
 app.get('/modificaball',function(req,res){
 	res.sendfile(__dirname+'/public/pages/modificaBall.html');
 });
-
+/** 
+ * inicialitza el servidor escoltant en el port 3000
+ */
 app.listen(config.express.port);
 console.log("ServerInit");

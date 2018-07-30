@@ -1,3 +1,7 @@
+/**
+ * Funcions per la taula Balladors
+ */
+
 express = require('express');
 
 router=express.Router();
@@ -6,6 +10,9 @@ router.use(function timeLog(req,res,next){
 	console.log('Time: ',Date.now())
 	next()
 })
+/**
+ * Funcio Get, obte tots els balladors per un ball en concret.
+ */
 router.get('/:codi_ball',function(req,res){
 	codi_ball=req.params.codi_ball
 	

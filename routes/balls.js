@@ -1,3 +1,6 @@
+/**
+ * Funcions per la taula Balls
+ */
 express = require('express');
 bodyParser=require('body-parser')
 router=express.Router();
@@ -6,6 +9,9 @@ router.use(function timeLog(req,res,next){
 	console.log('Time: ',Date.now())
 	next()
 })
+/**
+ * Obte Tots els balls de la taula
+ */
 router.get('/',function(req,res){
 	db.query("SELECT * FROM ball ORDER BY codi_ball").then(function(result){
 		console.log(result.rowCount)
@@ -16,6 +22,9 @@ router.get('/',function(req,res){
 	})
 	
 });
+/**
+ * Obte un ball en concret donat el seu numero de ball
+ */
 router.get('/:codi_ball',function(req,res){
 	codi=req.params.codi_ball
 	
@@ -26,6 +35,9 @@ router.get('/:codi_ball',function(req,res){
 	})
 });
 
+/**
+ * Modifica la informacio de un ball
+ */
 router.put('/:codi_ball',function(req,res){
 	
 	codi=req.params.codi_ball	
@@ -36,6 +48,9 @@ router.put('/:codi_ball',function(req,res){
 	})
 	
 })
+/**
+ * Afegeix un nou ball a la taula 
+ */
 router.post('/',function(req,res){
 	
 	
@@ -46,6 +61,9 @@ router.post('/',function(req,res){
 	})
 	res.send("200ok")
 })
+/**
+ * Elimina un Ball de la taula i actualitza el numero de ball de la resta de balls .
+ */
 router.delete('/:codi_ball',function(req,res){
 	var codi=parseInt(req.params.codi_ball)
 		console.log("codi: "+codi)

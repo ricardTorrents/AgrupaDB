@@ -33,25 +33,25 @@ app.use(sass({
 }))
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/',function(req,res){
-	res.sendfile(__dirname+'/public/index.html');
+	res.sendFile(__dirname+'/public/index.html');
 });
 app.get('/socis',function(req,res){
-	res.sendfile(__dirname+'/public/pages/pagSocis.html');
+	res.sendFile(__dirname+'/public/pages/pagSocis.html');
 });
 app.get('/nouSoci',function(req,res){
-	res.sendfile(__dirname+'/public/pages/insertaSoci.html');
+	res.sendFile(__dirname+'/public/pages/insertaSoci.html');
 });
 app.get('/modificaSoci',function(req,res){
-	res.sendfile(__dirname+'/public/pages/modificaSoci.html');
+	res.sendFile(__dirname+'/public/pages/modificaSoci.html');
 });
 app.get('/balls',function(req,res){
-	res.sendfile(__dirname+'/public/pages/pagBalls.html');
+	res.sendFile(__dirname+'/public/pages/pagBalls.html');
 });
 app.get('/nouBall',function(req,res){
-	res.sendfile(__dirname+'/public/pages/insertaballs.html');
+	res.sendFile(__dirname+'/public/pages/insertaballs.html');
 });
 app.get('/modificaball',function(req,res){
-	res.sendfile(__dirname+'/public/pages/modificaBall.html');
+	res.sendFile(__dirname+'/public/pages/modificaBall.html');
 });
 /** 
  * inicialitza el servidor escoltant en el port 3000

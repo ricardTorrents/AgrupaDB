@@ -80,6 +80,25 @@
                             <input type="radio" id="d" name="optradio">Dona</label>
                         <label class="radio-inline">
                             <input type="radio" id="h"name="optradio">Home</label>
+                            <div class="form-group">
+                                <label>Balls</label>
+                        </div>
+                           
+                        <div class="form-group row">
+                            
+                            <div id=ball v-for= "ball in lballs1" class="col-md-2">
+                                <label>
+                                    {{ball.nom}}
+                                    <input type="checkbox" v-bind:id="ball.codi_ball">
+                                </label>
+                            </div>
+                            <div id=ball v-for= "ball in lballs2" class="col-md-2">
+                                    <label>
+                                        {{ball.nom}}
+                                        <input type="checkbox" v-bind:id="ball.codi_ball">
+                                    </label>
+                                </div>
+                        </div>
                     </div>
                     <div id="botoNouSoci">
                             <button type="button" class="btn btn-primary" v-on:click="cancela" >Cancela</button>

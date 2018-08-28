@@ -20,6 +20,7 @@ window.addEventListener('load',function(){
             url:'',
 			baseUrl:'1',
             soci:'',
+            edat:'',
             lEspera:[],
             lballs:[],
             lballs1:[],
@@ -43,6 +44,9 @@ window.addEventListener('load',function(){
                axios.get(self.baseUrl +'socis/'+num).then(function(response){
                    self.soci=response.data[0]
                    d=new Date(self.soci.data_naixement)
+                   let avui= new Date()
+			        let naixement=new Date(self.soci.data_naixement)
+			        self.edat=avui.getFullYear()-naixement.getFullYear()
                    console.log(d.getMonth())
                   self.soci.data_naixement=d.getFullYear()+'-'+d.getMonth()+1+'-'+d.getDate()
                   if(self.soci.sexe=='D'){
@@ -70,13 +74,14 @@ window.addEventListener('load',function(){
 						let b=response.data
 						console.log(b)
 						b.forEach(function(ball,index){
-                            
+                            if((ball.edat_minima<self.edat)&&(ball.edat_maxima>self.edat)){
                             self.lballs.push(ball)
                             if(index%2==0){
                                 self.lballs1.push(ball)
                             }else{
                                 self.lballs2.push(ball)
                             }
+                        }
 						})
 						
 					}).then(function(){
@@ -168,17 +173,33 @@ window.addEventListener('load',function(){
              * Elimina el soci, mostra un popup de confirmació
              */
             elimina:function(){
-                
-                if(confirm("Estas segur d'eliminar a "+this.soci.nom+" "+this.soci.cognoms+"?")){
+                let motiu=prompt("Estas segur d'eliminar a "+this.soci.nom+" "+this.soci.cognoms+"?, en cas afirmatiu entri un motiu.","")
+                if(motiu!=null){
                     let self=this
                     let num=(location.search).substr(1)
                     console.log(num)
-                    axios.delete(self.baseUrl +'socis/'+num).then(function(response){
-                        location.replace(self.url+'/socis')
+                    axios.delete(self.baseUrl +'socis/'+num,{
+                    
+                    }).then(function(response){
+                        axios.post(self.baseUrl+'socis/baixes/',{
+                            nom:self.soci.nom,
+                            cognoms:self.soci.cognoms,
+                            dni:self.soci.dni,
+                            motiu:motiu,
+                            data:new Date()
+                        }).then(function(response){
+                            location.replace(self.url+'/socis')
+                        }).catch(function (error) {
+                            console.log(error.message)
+        
+                         })
+                            
                     }).catch(function (error) {
                         console.log(error.message)
     
                      })
+                }else{
+                    console.log("cancelat")
                 }
 
             }

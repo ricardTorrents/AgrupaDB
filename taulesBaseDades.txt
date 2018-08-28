@@ -35,3 +35,5 @@ UPDATE 1
 agrupacio=> COMMIT TRANSACTION 
 
 CREATE TABLE llistaEspera (dni varchar(9) NOT NULL REFERENCES soci(dni),codi_ball int NOT NULL REFERENCES ball(codi_ball), posicio int NOT NULL, data date NOT NULL,PRIMARY KEY (dni,codi_ball));
+
+CREATE TABLE baixes( dni varchar(9) NOT NULL, nom varchar(50) NOT NULL, cognoms varchar(100) NOT NULL, motiu varchar(1000), data date NOT NULL, PRIMARY KEY (dni,data));

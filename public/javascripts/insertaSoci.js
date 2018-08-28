@@ -102,25 +102,22 @@ window.addEventListener('load',function(){
 				
                 }).then(function(response){
                     let avui= new Date()
-                    console.log("llistaEsp")
-                    console.log(self.soci.data_naixement)
-                    let naixement=self.soci.data_naixement
-                    console.log(naixement)
-                    console.log(avui.getFullYear())
-                    console.log(naixement.getFullYear())
+                    
+                    
+                    let naixement=new Date(document.getElementById("sociDataNaixement").value)
+                    let sexe=s;
                     let edat=parseInt(avui.getFullYear())-parseInt(naixement.getFullYear())
-                    console.log(edat)
+                   
                     while(i<self.lballs.length){
-                        console.log(self.soci.dni);
-                        console.log(self.lballs.codi_ball);
-                        if(self.lballs[i].edat_maxima>edat){
+                       
+                        if((self.lballs[i].edat_maxima>edat)&&((self.lballs[i].sexe=='M')||(self.lballs[i].sexe==sexe))){
                             let check=document.getElementById(self.lballs[i].codi_ball)
                             console.log(check.checked)
                             console.log(check.disabled)
                             if((check.checked==true)&&(check.disabled==false)){
                                
                                 axios.post(self.baseUrl+'llistaEspera',{
-                                    dni:self.soci.dni,
+                                    dni:document.getElementById("sociDni").value,
                                     codi_ball:self.lballs[i].codi_ball
                                    
                                 }).then(function(response,body){

@@ -101,6 +101,21 @@ window.addEventListener('load',function(){
                         document.getElementById(l.codi_ball).checked=true
                         document.getElementById(l.codi_ball).disabled=true
                     })
+                }).then(function(){
+                    self.lballs.forEach(function(ball){
+                        if(document.getElementById(l.codi_ball).checked!=true){
+                            let avui= new Date()
+                    
+                    
+                            let naixement=new Date(document.getElementById("sociDataNaixement").value)
+                            let sexe=s;
+                            let edat=parseInt(avui.getFullYear())-parseInt(naixement.getFullYear())
+                            if(((self.soci.sexe!=ball.sexe)||(ball.sexe!='M'))&&(ball.edat_maxima<edat)){
+                                document.getElementById(ball.codi_ball).checked=true
+                                document.getElementById(ball.codi_ball).disabled=true
+                            }
+                        }
+                    })
                 }).catch(function (error) {
                     console.log(error.message)
                  })

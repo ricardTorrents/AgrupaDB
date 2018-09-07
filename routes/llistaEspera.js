@@ -71,33 +71,30 @@ router.post('/',function(req,res){
 /**
  * Elimina un registre de la taula i actualitza les posicions de la resta.
  */
-router.delete('/',function(req,res){
-   
-    db.query('SELECT count(*) FROM llistaEspera WHERE codi_ball=$1',[req.body.codi_ball]).then(function(result){
-		posicio=parseInt(result.rows[0].count)
-		console.log(posicio)
+router.post('/elimina',function(req,res){
+		var i=parseInt(req.body.posicio) 
+		console.log(i)
 		db.query('DELETE FROM llistaEspera WHERE dni=$1 and codi_ball=$2',[req.body.dni,req.body.codi_ball]).then(function(){
-			i=parseInt(req.body.posicio) +1
-			console.log(i)
-			while(i<=posicio){
-				db.query('UPDATE llistaEspera SET posicio=posicio-1 WHERE posicio=$1',[i]).then(function(result){
-					console.log(result)
-					
-				}).catch(function(err){
-					console.log(err);
-				})
-				i=i+1
-			}
 			
+		
 		}).then(function(){
-			res.send("200ok")
+			db.query('UPDATE llistaEspera SET posicio=posicio-1 WHERE posicio>$1 AND codi_ball=$2',[i,req.body.codi_ball]).then(function(result){
+				console.log(result)
+				
+			}).then(function(){
+				res.send("200ok")
+			}).catch(function(err){
+				
+				console.log("errorUpdate")
+				console.log(err);
+			})
+			
 		}).catch(function(err){
+			console.log("errorDlete")
 			console.log(err);
 		})
         
-    }).catch(function(err){
-		console.log(err);
-	})
+    
 	
 
 })

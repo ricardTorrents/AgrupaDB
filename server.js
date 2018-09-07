@@ -53,6 +53,9 @@ app.get('/nouBall',function(req,res){
 app.get('/modificaball',function(req,res){
 	res.sendFile(__dirname+'/public/pages/modificaBall.html');
 });
+app.get('/balladors',function(req,res){
+	res.sendFile(__dirname+'/public/pages/pagBalladors.html');
+});
 /** 
  * inicialitza el servidor escoltant en el port 3000
  */

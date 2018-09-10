@@ -196,7 +196,7 @@ window.addEventListener('load',function(){
                     axios.delete(self.baseUrl +'socis/'+num,{
                     
                     }).then(function(response){
-                        axios.post(self.baseUrl+'socis/baixes/',{
+                        axios.post(self.baseUrl+'baixes/',{
                             nom:self.soci.nom,
                             cognoms:self.soci.cognoms,
                             dni:self.soci.dni,

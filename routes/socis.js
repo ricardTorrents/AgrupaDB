@@ -72,18 +72,7 @@ router.post('/',function(req,res){
 	})
 	res.send("200ok")
 })
-/**
- * Elimina un soci i actualitza els numeros de socis de la resta de socis.
- */
-router.post('/baixes/',function(req,res){
-	
-	db.query('INSERT INTO baixes(nom,cognoms,dni,motiu,data) values($1,$2,$3,$4,$5)',[req.body.nom,req.body.cognoms,req.body.dni,req.body.motiu,req.body.data]).then(function(result){
-		
-	}).catch(function(err){
-		console.log(err);
-	})
-	res.send("200ok")
-})
+
 router.delete('/:numerosoci',function(req,res){
 	var numerosoci=parseInt(req.params.numerosoci)
 		

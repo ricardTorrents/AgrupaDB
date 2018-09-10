@@ -56,6 +56,9 @@ app.get('/modificaball',function(req,res){
 app.get('/balladors',function(req,res){
 	res.sendFile(__dirname+'/public/pages/pagBalladors.html');
 });
+app.get('/baixes',function(req,res){
+	res.sendFile(__dirname+'/public/pages/baixes.html');
+});
 /** 
  * inicialitza el servidor escoltant en el port 3000
  */

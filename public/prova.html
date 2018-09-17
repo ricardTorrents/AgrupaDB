@@ -1,0 +1,78 @@
+<html>
+<!--Pagina inicial, permet accedir a pagian de socis i pagina de balls-->
+
+<head>
+
+	<title id="titulHead">AgrupaDB</title>
+	<meta charset="UTF-8">
+	<script src="javascripts/llibreries/jquery-3.3.1.min.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script> -->
+	<script src="javascripts/llibreries/bootstrap.min.js"></script>
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	 crossorigin="anonymous"></script> -->
+	<script src="javascripts/llibreries/fontawesome.js"></script>
+	<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+	 crossorigin="anonymous"></script> -->
+	<link rel="stylesheet" href="stylesheets/llibreries/bootstrap.min.css">
+	<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	 crossorigin="anonymous"> -->
+	<script src="javascripts/llibreries/solid.js"></script>
+	<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+	 crossorigin="anonymous"></script> -->
+	<link rel="stylesheet" href="stylesheets/llibreries/fonts.css">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Rock+Salt|Roboto" rel="stylesheet"> -->
+	<script src="javascripts/llibreries/vue.min.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
+	<!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<link rel="stylesheet" href="stylesheets/style.css">
+	<script src="javascripts/agrupa.js"></script>
+	<script src="components.js"></script>
+</head>
+
+<body>
+	<div id="vueComponent">
+		<div id="caps"></div>
+	</div>
+		<!-- <div id="header" class="row">
+				<div class="col-md-2">
+					<div class="col-md-1" title="Socis" style="cursor:pointer;">
+						<i class="fas fa-user "></i>
+					</div>
+					<div class="col-md-1"  title="Socis" style="cursor:pointer;">
+						<i class="fas fa-music "></i>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<img src="/images/agrupa.png"/>
+				</div>
+				<div class="col-md-2">
+						<div  title="Socis" style="cursor:pointer;">
+								<i class="fas fa-bars"></i>
+							</div>
+				</div>
+	
+	
+			</div> -->
+	<div id="vue">
+		
+		<div id="pagInici" class="row">
+			<div id="socis" class="col-md-2">
+				<div class="img-circle center-block " v-on:click="mostraPagSocis" title="Socis" style="cursor:pointer;">
+					<i class="fas fa-user iconPicture"></i>
+				</div>
+			</div>
+			<div id="balls" class="col-md-2">
+				<div class="img-circle center-block " v-on:click="mostraPagBalls" title="Balls" style="cursor:pointer;">
+					<i class="fas fa-music iconPicture"></i>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+</body>
+
+</html>

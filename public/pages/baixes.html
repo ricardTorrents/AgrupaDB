@@ -29,16 +29,21 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="stylesheets/style.css">
     <script src="/javascripts/baixes.js"></script>
+    <script src="/javascripts/components.js"></script>
 
 </head>
 
+
 <body>
+    <div id="vueComponent">
+        <div id="caps"></div>
+
+
+    </div>
     <div id="vueBaixes">
-        <div id="header" class="col-md-12">
-            <strong> Agrupacó de Balls Populars </strong>
-        </div>
+       
         <div id="llistaBaixes" class= "row">
-            <div class=" row soci ">
+            <div class=" row  " id="capsalera">
                 <div class=" col-md-3">
                     DNI
                 </div>
@@ -52,7 +57,7 @@
                     DATA
                 </div>
             </div>
-            <div class=" row soci " v-for="baixa in baixes">
+            <div class=" row baixa " v-for="baixa in baixes">
                 <div class=" col-md-3">
                     {{baixa.dni}}
                 </div>
@@ -67,6 +72,10 @@
                 </div>
             </div>
         </div>
+        <div style="text-align: center;">
+            <button type="button"  class="btn btn-primary" v-on:click="retornaInici">Retorna </button>
+        </div>
+        
     </div>
 </body>
 

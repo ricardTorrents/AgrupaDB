@@ -1,15 +1,56 @@
 
 #vue{
 	height: 93vh;
+	width: auto;
+	padding: 0%;
+	margin: 0%;
 }
 #header{
-	background-color:#1aa3ff;
-	border-top-left-radius:5px;
-	border-top-right-radius:5px;
+	padding: 0.5%;
+	margin: 0%;
+	color:#2D57B4;
+	border:5px solid #2D57B4;
 	text-align:center;
-	color:black;
-	font-size:50px;
-	
+	#socis{
+		
+		font-size: 70px;
+	}
+	#balls{
+		margin-left: 30%;
+		font-size: 70px;
+	}
+	img{
+		width: 60%;
+		height: 15%;
+	}
+	#imatgeLogin{
+		width: 40%;
+		height: 10%;
+	}
+	.separator{
+		height: 3%;
+	}
+	#menu{
+		font-size:70px;
+		
+		text-align: center;
+		vertical-align:-webkit-baseline-middle;
+	}
+	#dropdown{
+		font-size: 20px;
+		margin-left: 30%;
+		padding: 5%;
+		background-color: #2D57B4;
+		#usuari{
+			padding: 10%;
+		}
+		.dropdown-item{
+			background-color:white;
+			border: 0.5px solid #2D57B4;
+			padding: 1%;
+			
+		}
+	}
 }
 
 #pagInici{
@@ -30,6 +71,17 @@
 	
 	}
 	#balls{
+		vertical-align:center;
+		height: 93vh;
+		padding-top:10%;
+		text-align:center;
+		width:50%;
+		font-size:200px;
+		
+		border-left: 1px solid #1aa3ff;
+
+	}
+	#iconeBaixes{
 		vertical-align:center;
 		height: 93vh;
 		padding-top:10%;
@@ -407,5 +459,94 @@
 }
 
 #vueBaixes{
-	color: #1aa3ff;
+	
+	#llistaBaixes{
+		padding: 10%;
+		text-align: center;
+		
+	}
+	#capsalera{
+		border: 1px solid #1aa3ff;
+	}
+	.baixa{
+		border-left:1px solid #1aa3ff;
+		border-right:1px solid #1aa3ff;
+		border-bottom: 1px solid #1aa3ff;
+	}
+}
+#vueContrasneya{
+	#pagContrasenya{
+	
+		padding-top: 5%;
+		height: 93vh;
+		color:#2D57B4;
+		font-size: 25px;
+		#FormContrasenya{
+			margin-left: 20%;
+			margin-right: 20%;
+			padding-top: 2%;
+			padding-left: 2%;
+			padding-right: 2%;
+			border: 1px solid #2D57B4;
+			
+			#botoContrasenya{
+				margin-left: 20%;
+				margin-right: 20%;
+				text-align: center;
+				padding-bottom: 2%;
+				padding-left: 2%;
+				padding-right: 2%;
+				padding-top:2%; 
+				
+			}
+			.missatgeError{
+				color:red;
+				text-align: center;
+				
+			}
+			.btn-primary{
+				background-color: #2D57B4;
+			}
+			
+			
+		}
+		
+	}
+}
+#vueLogin{
+	
+	#pagLogin{
+	
+		padding-top: 5%;
+		height: 93vh;
+		color:#2D57B4;
+		font-size: 25px;
+		#FormLogin{
+			margin-left: 20%;
+			margin-right: 20%;
+			padding-top: 2%;
+			padding-left: 2%;
+			padding-right: 2%;
+			border: 1px solid #2D57B4;
+			
+			#botoLogin{
+				margin-left: 20%;
+				margin-right: 20%;
+				text-align: center;
+				padding-bottom: 2%;
+				padding-left: 2%;
+				padding-right: 2%;
+				padding-top:2%; 
+				
+			}
+			#missatgeError{
+				color:red;
+				text-align: center;
+				
+			}
+			
+		}
+		
+	}
+	
 }

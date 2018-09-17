@@ -17,25 +17,34 @@ window.addEventListener('load',function(){
 		el: '#vue',
 		
 		data:{
-			url:''
-			
+			url:'',
+			usuari:''
 			
 			
 		},
 		mounted: function () {
 			
 			this.inicial()
-			
+			this.obteUsuari()
 		},
 		methods: {
 			inicial:function(){
 				
 				this.url='http://'+location.host
-				
+				console.log(this.url)
 			},
 			/**
 			 * Carrega Pagina Socis
 			 */
+			obteUsuari:function(){
+				let self=this
+				axios.get(this.url+'/usuari').then(function(response){
+					console.log(response.data)
+					self.usuari=response.data
+				}).catch(function (error) {
+				 console.log(error.message)
+		   })
+			},
 			mostraPagSocis:function(){
 			
 				location.replace(this.url+'/socis')
@@ -47,6 +56,10 @@ window.addEventListener('load',function(){
 				
 				location.replace(this.url+'/balls')
 			},
+			mostraBaixes:function(){
+
+				location.replace(this.url+'/baixes')
+			}
 			
 		}
 	})

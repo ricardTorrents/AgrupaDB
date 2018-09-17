@@ -7,6 +7,8 @@ var routes=require('./routes/routes');
 var pg=require('pg-promise-simple');
 var bodyParser=require('body-parser')
 var connString="postgres://torrents:agrupa@localhost:5432/agrupacio";
+var session=require('express-session')
+var cookie=require("cookie-parser")
 /**
  * Estableix connexio amb la base de dades 
  */
@@ -23,8 +25,13 @@ routes.create(app)
 
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
-
-
+app.use(session({
+	secret:'token',
+	
+	resave:true,
+	saveUninitialized:true
+}))
+app.use(cookie('token'))
 app.use(sass({
 	src: path.join(__dirname,'public'),
 	dest:path.join(__dirname,'public'),
@@ -32,32 +39,143 @@ app.use(sass({
 	outputStyle:'compressed'
 }))
 app.use(express.static(path.join(__dirname, 'public')));
-app.get('/',function(req,res){
+app.put('/usuaris',function(req,res){
+	
+	  db.query('SELECT count(*) FROM usuaris WHERE usuari=$1 AND contrasenya=$2',[req.body.usuari,req.body.contrasenya]).then(function(result){
+		  console.log("hols")
+		  if(result.rows[0].count==1){
+			  req.session.user=req.body.usuari
+			  req.session.auth=true
+			  res.send("Correcte")
+			  
+		  }else{
+			  res.send("Incorrecte")
+		  }
+		  
+	  }).catch(function(err){
+		  console.log(err);
+	  })
+	  
+  })
+  app.put('/canviaContrasenya',function(req,res){
+	console.log(req.session)
+	 var usuari=req.session.user
+	  db.query('SELECT count(*) FROM usuaris WHERE usuari=$1 AND contrasenya=$2',[usuari,req.body.contrasenya]).then(function(result){
+		  
+		  if(result.rows[0].count==1){
+			  db.query('UPDATE usuaris SET contrasenya=$1 WHERE usuari=$2',[req.body.novacontrasenya,usuari]).then(function(result){
+				res.send("Correcte")
+			}).catch(function(err){
+				console.log(err);
+			})
+  
+		  }else{
+			  res.send("Incorrecte")
+		  }
+		  
+	  }).catch(function(err){
+		  console.log(err);
+	  })
+})  
+  app.put('/tancaSessio',function(req,res){
+		req.session.auth=false
+		res.send("Sessio tancada")
+	
+	
+	
+})
+  app.get('/usuari',function(req,res){
+	res.send(req.session.user)
+  })
+app.get('/inici',function(req,res){
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/inici.html');
+	}
+});
+app.get('/contrasenya',function(req,res){
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/canviaContrasenya.html');
+	}
+});
+app.get('',function(req,res){
+	
 	res.sendFile(__dirname+'/public/index.html');
+	
+});
+app.get('/prova',function(req,res){
+	
+	res.sendFile(__dirname+'/public/prova.html');
+	
 });
 app.get('/socis',function(req,res){
-	res.sendFile(__dirname+'/public/pages/pagSocis.html');
+	
+
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/pagSocis.html');
+	}
+	
 });
 app.get('/nouSoci',function(req,res){
-	res.sendFile(__dirname+'/public/pages/insertaSoci.html');
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/insertaSoci.html');
+	}
+	
 });
 app.get('/modificaSoci',function(req,res){
-	res.sendFile(__dirname+'/public/pages/modificaSoci.html');
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/modificaSoci.html');
+	}
+	
 });
 app.get('/balls',function(req,res){
-	res.sendFile(__dirname+'/public/pages/pagBalls.html');
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/pagBalls.html');
+	}
+	
 });
 app.get('/nouBall',function(req,res){
-	res.sendFile(__dirname+'/public/pages/insertaballs.html');
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/insertaballs.html');
+	}
+	
 });
 app.get('/modificaball',function(req,res){
-	res.sendFile(__dirname+'/public/pages/modificaBall.html');
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/modificaBall.html');
+	}
+	
 });
 app.get('/balladors',function(req,res){
-	res.sendFile(__dirname+'/public/pages/pagBalladors.html');
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/pagBalladors.html');
+	}
+	
 });
 app.get('/baixes',function(req,res){
-	res.sendFile(__dirname+'/public/pages/baixes.html');
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/baixes.html');
+	}
+	
 });
 /** 
  * inicialitza el servidor escoltant en el port 3000

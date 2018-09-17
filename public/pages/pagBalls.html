@@ -28,14 +28,19 @@
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<link rel="stylesheet" href="stylesheets/style.css">
     <script src="/javascripts/pagBalls.js"></script>
+    <script src="/javascripts/components.js"></script>
 
 </head>
 
+
 <body>
+    <div id="vueComponent">
+        <div id="caps"></div>
+
+
+    </div>
     <div id="vuepagBalls">
-        <div id="header" class="col-md-12">
-            <strong> Agrupacó de Balls Populars </strong>
-        </div>
+       
         <div id="pagBalls">
 
             <div id="llistaBalls" class="col-md-2">
@@ -139,6 +144,7 @@
                             </div>
                         </div>
                     </div>
+                    <button type="button" class="btn btn-primary" v-on:click="balladors">Gestiona Balladors</button>
                 </div>
             </div>
         </div>

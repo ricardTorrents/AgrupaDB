@@ -166,7 +166,7 @@ window.addEventListener('load',function(){
 			 * Redirigeix a la pagina d'inici
 			 */
 			retornaInici:function(){
-				location.replace(this.url)
+				location.replace(this.url+'/balls')
 			},
 			/**
 			 * Redirigeix a la pagina de modifica ball

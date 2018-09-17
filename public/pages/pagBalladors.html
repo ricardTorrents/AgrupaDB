@@ -29,16 +29,22 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="stylesheets/style.css">
     <script src="/javascripts/BallsLEspera.js"></script>
+    <script src="/javascripts/components.js"></script>
 
 </head>
 
+
 <body>
+    <div id="vueComponent">
+        <div id="caps"></div>
+
+
+    </div>
     <div id="vueBallsLEspera">
-        <div id="header" class="col-md-12">
-            <strong> Agrupacó de Balls Populars </strong>
-        </div>
+       
 
         <div id="ballDetall">
+            <button type="button" class="btn btn-primary" v-on:click="retornaInici">Torna a Balls</button>
             <div id="capsDetallBall">
                 <strong style="display: inline-block; width: 60%;"> {{ballSeleccionat.nom}}</strong>
                 
@@ -177,6 +183,7 @@
                     
                 </div>
             </div>
+            
         </div>
     </div>
 </body>

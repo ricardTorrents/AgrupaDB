@@ -19,10 +19,13 @@ window.addEventListener('load', function () {
         data: {
             baseUrl: '',
             baixes: [],
+            url:''
         },
 
         mounted: function () {
             this.baseUrl = 'http://' + location.host + '/api/'
+            this.url='http://'+location.host
+            this.carregaDades()
 
         },
 
@@ -33,12 +36,18 @@ window.addEventListener('load', function () {
                     let b = response.data
 
                     b.forEach(function (baixa) {
+                        d=new Date(baixa.data)
+						mes=parseInt(d.getMonth())+1
+						baixa.data=d.getFullYear()+'-'+mes+'-'+d.getDate()
                         self.baixes.push(baixa)
                     })
                 }).catch(function (error) {
                     console.log(error.message)
                 })
-            }
+            },
+            retornaInici:function(){
+				location.replace(this.url+'/inici')
+			},
         }
     })
 })

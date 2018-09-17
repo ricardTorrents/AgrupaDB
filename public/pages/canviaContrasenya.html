@@ -1,11 +1,10 @@
 <html>
-<!--Pagina Amb formulari per insertar un nou Ball-->
+<!--Pagina amb formulari per autentificar-se-->
 
 <head>
 
     <title id="titulHead">AgrupaDB</title>
     <meta charset="UTF-8">
-
     <script src="javascripts/llibreries/jquery-3.3.1.min.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	 crossorigin="anonymous"></script> -->
@@ -28,8 +27,7 @@
     <!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="stylesheets/style.css">
-    <script src="/javascripts/insertaBall.js"></script>
-
+    <script src="/javascripts/canviaContrasenya.js"></script>
     <script src="/javascripts/components.js"></script>
 
 </head>
@@ -38,43 +36,35 @@
 <body>
     <div id="vueComponent">
         <div id="caps"></div>
-
-
     </div>
-    <div id="vueinsertaball">
+    <div id="vueContrasneya">
         
-        <div id="pagInsertaBall">
-            <div id=FormNouBall>
+        <div id="pagContrasenya">
+            <div id=FormContrasenya>
                 <div class="form-group">
-                    <label for="ballNom">Nom:</label>
-                    <input type="text" class="form-control" id="ballNom">
+                    <label for="contrasenya">Contrasenya:</label>
+                    <input type="password" class="form-control" id="contrasenya" >
+                    <div id="missatgeErrorAntiga" class="missatgeError"></div>
+                </div>
+               
+                <div class="form-group">
+                        <label for="NovaContrasenya">Nova Contrasenya:</label>
+                        <input type="password" class="form-control" id="NovaContrasenya" >
+                        <div id="missatgeErrorNova" class="missatgeError"></div>
                 </div>
                 <div class="form-group">
-                    <label for="ballParticipants">Participants:</label>
-                    <input type="text" class="form-control" id="ballParticipants">
+                        <label for="Repeticio">Repeteix Nova Contrasenya:</label>
+                        <input type="password" class="form-control" id="Repeticio" >
                 </div>
-                <div class="form-group">
-                    <label for="ballEdatMinima">Edat Minima:</label>
-                    <input type="text" class="form-control" id="ballEdatMinima">
+               
+                <div id="botoContrasenya" >
+                        <button type="button" class="btn btn-primary" v-on:click="canvia">Canvia </button>
+                      
                 </div>
-
-                <div class="form-group">
-                    <label for="ballEdatMaxima">Edat Maxima:</label>
-                    <input type="email" class="form-control" id="ballEdatMaxima">
-                </div>
-
-                <label>Sexe:</label>
-                <label class="radio-inline">
-                    <input type="radio" id="d" name="optradio">Dones</label>
-                <label class="radio-inline">
-                    <input type="radio" id="h" name="optradio">Homes</label>
-                <label class="radio-inline">
-                    <input type="radio" id="m" name="optradio">Mixte</label>
+                <div id="missatgeErrorRepeticio" class="missatgeError"></div>
             </div>
-            <div id="botoNouSoci">
-                <button type="button" class="btn btn-primary" v-on:click="cancela">Cancela</button>
-                <button type="button" class="btn btn-primary" v-on:click="afegeixBall">Afegeix</button>
-            </div>
+            
+
 
         </div>
     </div>

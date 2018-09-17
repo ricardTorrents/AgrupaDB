@@ -11,11 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "~1.18.2",
+    "cookie-parser": "",
     "connect": "^3.6.6",
     "express": "",
     "node-sass": "",
     "node-sass-middleware": "",
     "pg": "",
-    "pg-promise-simple": ""
+    "pg-promise-simple": "",
+    "express-session":""
   }
 }

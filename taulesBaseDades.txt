@@ -25,15 +25,9 @@ INSERT INTO soci(dni,nom,cognoms,data_naixement,adreça,ciutat,email,telefon,tel
 
 CREATE TABLE balladors(dni varchar(9) NOT NULL REFERENCES soci(dni),codi_ball int NOT NULL REFERENCES ball(codi_ball), PRIMARY KEY (dni,codi_ball));
 
-INSERCIONS
-BEGIN TRANSACTION; 
-INSERT INTO balladors (dni,codi_ball) values('69048573L',1);
-BEGIN
-INSERT 0 1
-agrupacio=> UPDATE soci SET codi_ball=1 WHERE dni='69048573L';
-UPDATE 1
-agrupacio=> COMMIT TRANSACTION 
 
 CREATE TABLE llistaEspera (dni varchar(9) NOT NULL REFERENCES soci(dni),codi_ball int NOT NULL REFERENCES ball(codi_ball), posicio int NOT NULL, data date NOT NULL,PRIMARY KEY (dni,codi_ball));
 
 CREATE TABLE baixes( dni varchar(9) NOT NULL, nom varchar(50) NOT NULL, cognoms varchar(100) NOT NULL, motiu varchar(1000), data date NOT NULL, PRIMARY KEY (dni,data));
+
+CREATE TABLE usuaris(usuari varchar(20) NOT NULL,contrasenya varchar(20) NOT NULL, PRIMARY KEY (usuari,contrasenya));

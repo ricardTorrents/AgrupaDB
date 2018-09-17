@@ -136,7 +136,7 @@ window.addEventListener('load',function(){
 				location.replace(this.url+'/modificaSoci?'+this.sociSeleccionat.numerosoci)
 			},
 			retornaInici:function(){
-				location.replace(this.url)
+				location.replace(this.url+'/inici')
 			}
 		}
 	})

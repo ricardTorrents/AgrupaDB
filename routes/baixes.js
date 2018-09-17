@@ -26,7 +26,7 @@ router.post('/',function(req,res){
 
 router.get('/', function(req,res){
 
-    db.query('SELECT * FROM baixes').then(function(req,res){
+    db.query('SELECT * FROM baixes').then(function(result){
         var response=result.rows
         res.send(response)
 

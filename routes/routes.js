@@ -3,7 +3,7 @@ var balls=require('./balls')
 var balladors=require('./balladors')
 var llistaEspera=require('./llistaEspera')
 var baixes=require('./baixes')
-var usuaris=require('./usuaris')
+
 /**
  * 
  * @param {} app 

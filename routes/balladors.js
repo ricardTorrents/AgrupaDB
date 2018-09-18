@@ -23,6 +23,38 @@ router.get('/:codi_ball',function(req,res){
 		console.log(err);
 	})
 });
+router.post('/elimina',function(req,res){
+	console.log(req.body)
+	 db.query('DELETE FROM balladors WHERE dni=$1 AND codi_ball=$2',[req.body.dni,req.body.codi_ball]).then(function(result){
+		db.query('UPDATE soci SET codi_ball=NULL WHERE dni=$1',[req.body.dni]).then(function(result){
+				res.send("200ok")
+			}).catch(function(err){
+				console.log(err);
+			})
+        
+       
+	}).catch(function(err){
+		console.log(err);
+	})
+	
+
+})
+router.post('/eliminaAlternatiu',function(req,res){
+	console.log(req.body)
+	 db.query('DELETE FROM balladors WHERE dni=$1 AND codi_ball=$2',[req.body.dni,req.body.codi_ball]).then(function(result){
+		db.query('UPDATE soci SET codi_ball2=NULL WHERE dni=$1',[req.body.dni]).then(function(result){
+				res.send("200ok")
+			}).catch(function(err){
+				console.log(err);
+			})
+        
+       
+	}).catch(function(err){
+		console.log(err);
+	})
+	
+
+})
 router.post('/',function(req,res){
 	console.log(req.body)
 	 db.query('DELETE FROM balladors WHERE dni=$1',[req.body.dni]).then(function(result){
@@ -46,5 +78,18 @@ router.post('/',function(req,res){
 	
 
 })
-
+router.post('/ballAlternatiu',function(req,res){
+	db.query('INSERT INTO balladors(dni,codi_ball) values($1,$2)',[req.body.dni,req.body.codi_ball]).then(function(result){
+		console.log(result)
+	}).then(function(){
+		db.query('UPDATE soci SET codi_ball2=$1 WHERE dni=$2',[req.body.codi_ball,req.body.dni]).then(function(result){
+			res.send("200ok")
+		}).catch(function(err){
+			console.log(err);
+		})
+		
+	}).catch(function(err){
+		console.log(err);
+	})
+})
 module.exports=router

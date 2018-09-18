@@ -58,7 +58,13 @@
 
                 <div id=lSocis class="row">
                     <div class=" row soci " style="cursor: pointer;" v-on:click="mostraDetallSoci(soci)" v-for="soci in lsocis">
-                        <div class=" col-md-4">
+                        <div class=" col-md-1" v-if="soci.pagat==false" style="color:red;">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <div class=" col-md-1" v-if="soci.pagat==true" style="color:greenyellow;">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class=" col-md-2">
                             {{soci.numerosoci}}
                         </div>
                         <div class=" col-md-4">
@@ -90,6 +96,13 @@
                         <strong class="col-sm-7">DNI:</strong>
                         <div>
                             {{sociSeleccionat.dni}}
+                        </div>
+                    </div>
+                    <div class="row campDetall">
+
+                        <strong class="col-sm-7">Numero de Registre:</strong>
+                        <div>
+                            {{sociSeleccionat.numeroregistre}}
                         </div>
                     </div>
                     <div class="row campDetall">
@@ -134,10 +147,28 @@
                             {{sociSeleccionat.ciutat}}
                         </div>
                     </div>
-                    <div class="row campDetall">
+                    <div class="row campDetall" v-if="sociSeleccionat.nomBall!=null">
                         <strong class="col-sm-7">Ball</strong>
                         <div>
                             {{sociSeleccionat.nomBall}}
+                        </div>
+                    </div>
+                    <div class="row campDetall" v-if="sociSeleccionat.nomBall==null&&sociSeleccionat.nomBall2==null">
+                        <strong class="col-sm-7">Ball</strong>
+                        <div>
+                            No Ballador
+                        </div>
+                    </div>
+                     <div class="row campDetall" v-if="sociSeleccionat.nomBall2!=null">
+                        <strong class="col-sm-7">Ball</strong>
+                        <div>
+                            {{sociSeleccionat.nomBall2}}
+                        </div>
+                    </div> 
+                    <div class="row campDetall" >
+                        <strong class="col-sm-7">Cuota</strong>
+                        <div>
+                            {{sociSeleccionat.cuota}}
                         </div>
                     </div>
                     <div id="lespera">
@@ -157,6 +188,7 @@
                             </div>
                         </div>
                     </div>
+                    <button v-if="sociSeleccionat.pagat!=true" type="button"  class="btn btn-primary" v-on:click="pagat">Pagat </button>
 
                 </div>
             </div>

@@ -171,13 +171,82 @@ window.addEventListener('load',function(){
 			/**
 			 * Redirigeix a la pagina de modifica ball
 			 */
+			eliminaBall(ballador){
+				let self=this
+				if(confirm("Eliminar a "+ballador.nom+" "+ballador.cognoms+" del ball "+self.ballSeleccionat.nom)){
+					console.log(ballador.dni)
+					if(self.ballSeleccionat.nom!="Malcasats"){
+						axios.post(self.baseUrl+'balladors/elimina',{
+							dni:ballador.dni,
+							codi_ball:self.ballSeleccionat.codi_ball
+						}).then(function(){
+							let codi=(location.search).substr(1)
+								console.log(codi)
+								location.replace('http://localhost:3000/balladors?'+codi)
+						}).catch(function (error) {
+							console.log(error.message)
+						})
+					}else{
+						axios.post(self.baseUrl+'balladors/eliminaAlternatiu',{
+							dni:ballador.dni,
+							codi_ball:self.ballSeleccionat.codi_ball
+						}).then(function(){
+							let codi=(location.search).substr(1)
+								console.log(codi)
+								location.replace('http://localhost:3000/balladors?'+codi)
+						}).catch(function (error) {
+							console.log(error.message)
+						})
+					}
+				}
+			},
 			introdueixalBall(soci){
 				let self=this
-				console.log(soci.dni)
-				axios.post(self.baseUrl+'balladors/',{
-					dni:soci.dni,
-					codi_ball:self.ballSeleccionat.codi_ball
-				}).then(function(){
+				if(confirm("Inserir "+soci.nom+" "+soci.cognoms+" al ball de "+self.ballSeleccionat.nom)){
+					if(self.ballSeleccionat.nom!="Malcasats"){
+						axios.post(self.baseUrl+'balladors/',{
+							dni:soci.dni,
+							codi_ball:self.ballSeleccionat.codi_ball
+						}).then(function(){
+							axios.post(self.baseUrl+'llistaEspera/elimina',{
+								dni:soci.dni,
+								codi_ball:self.ballSeleccionat.codi_ball,
+								posicio:soci.posicio
+							}).then(function(){
+								let codi=(location.search).substr(1)
+									console.log(codi)
+									location.replace('http://localhost:3000/balladors?'+codi)
+							}).catch(function (error) {
+								console.log(error.message)
+							})
+						}).catch(function (error) {
+							console.log(error.message)
+						})
+					}else{
+						axios.post(self.baseUrl+'balladors/ballAlternatiu',{
+							dni:soci.dni,
+							codi_ball:self.ballSeleccionat.codi_ball
+						}).then(function(){
+							axios.post(self.baseUrl+'llistaEspera/elimina',{
+								dni:soci.dni,
+								codi_ball:self.ballSeleccionat.codi_ball,
+								posicio:soci.posicio
+							}).then(function(){
+								let codi=(location.search).substr(1)
+									console.log(codi)
+									location.replace('http://localhost:3000/balladors?'+codi)
+							}).catch(function (error) {
+								console.log(error.message)
+							})
+						}).catch(function (error) {
+							console.log(error.message)
+						})
+					}
+				}
+			},
+			eliminaLlistaEspera(soci){
+				let self=this
+				if(confirm("Eliminar "+soci.nom+" "+soci.cognoms+" de la llista d'espera de "+self.ballSeleccionat.nom)){
 					axios.post(self.baseUrl+'llistaEspera/elimina',{
 						dni:soci.dni,
 						codi_ball:self.ballSeleccionat.codi_ball,
@@ -189,45 +258,31 @@ window.addEventListener('load',function(){
 					}).catch(function (error) {
 						console.log(error.message)
 					})
-				}).catch(function (error) {
-					console.log(error.message)
-				})
-			},
-			eliminaLlistaEspera(soci){
-				let self=this
-				axios.post(self.baseUrl+'llistaEspera/elimina',{
-					dni:soci.dni,
-					codi_ball:self.ballSeleccionat.codi_ball,
-					posicio:soci.posicio
-				}).then(function(){
-					let codi=(location.search).substr(1)
-						console.log(codi)
-						location.replace('http://localhost:3000/balladors?'+codi)
-				}).catch(function (error) {
-					console.log(error.message)
-				})
+				}
 			},
 			posaAlFinal(soci){
 				let self=this
-				axios.post(self.baseUrl+'llistaEspera/elimina',{
-					dni:soci.dni,
-					codi_ball:self.ballSeleccionat.codi_ball,
-					posicio:soci.posicio
-			   }).then(function(){
-					axios.post(self.baseUrl+'llistaEspera',{
+				if(confirm("Posar al final de la llista d'espera de "+self.ballSeleccionat.nom+"a "+soci.nom+" "+soci.cognoms)){
+					axios.post(self.baseUrl+'llistaEspera/elimina',{
 						dni:soci.dni,
-						codi_ball:self.ballSeleccionat.codi_ball
-					}).then(function(response,body){
-						let codi=(location.search).substr(1)
-						console.log(codi)
-						location.replace('http://localhost:3000/balladors?'+codi)
+						codi_ball:self.ballSeleccionat.codi_ball,
+						posicio:soci.posicio
+					}).then(function(){
+						axios.post(self.baseUrl+'llistaEspera',{
+							dni:soci.dni,
+							codi_ball:self.ballSeleccionat.codi_ball
+						}).then(function(response,body){
+							let codi=(location.search).substr(1)
+							console.log(codi)
+							location.replace('http://localhost:3000/balladors?'+codi)
+						}).catch(function (error) {
+							console.log(error.message)
+
+						})
 					}).catch(function (error) {
 						console.log(error.message)
-
 					})
-			   }).catch(function (error) {
-					 console.log(error.message)
-			   })
+				}
 			}
 			
 		}

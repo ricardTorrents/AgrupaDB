@@ -59,13 +59,25 @@ router.put('/:numerosoci',function(req,res){
 	})
 	
 })
+router.put('/pagat/:numerosoci',function(req,res){
+	
+	numerosoci=req.params.numerosoci
+	
+	
+	db.query('UPDATE soci SET pagat=true where numerosoci=$1',[numerosoci]).then(function(result){
+		res.send("200OK")
+	}).catch(function(err){
+		console.log(err);
+	})
+	
+})
 /**
  * Insereix un nou soci
  */
 router.post('/',function(req,res){
 	console.log(req.body.data_naixement)
 	
-	db.query('INSERT INTO soci(dni,nom,cognoms,data_naixement,adreça,ciutat,email,telefon,telefon2,sexe) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)',[req.body.dni,req.body.nom,req.body.cognoms,req.body.data_naixement,req.body.adreça,req.body.ciutat,req.body.email,req.body.telefon,req.body.telefon2,req.body.sexe]).then(function(result){
+	db.query('INSERT INTO soci(dni,nom,cognoms,data_naixement,adreça,ciutat,email,telefon,telefon2,sexe,pagat) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,false)',[req.body.dni,req.body.nom,req.body.cognoms,req.body.data_naixement,req.body.adreça,req.body.ciutat,req.body.email,req.body.telefon,req.body.telefon2,req.body.sexe]).then(function(result){
 		console.log(result)
 	}).catch(function(err){
 		console.log(err);

@@ -55,12 +55,28 @@ window.addEventListener('load',function(){
 						let s=response.data
 						
 						s.forEach(function(soci){
+							
+							if(soci.pagat==false){
+								soci.cuota="No Pagada"
+							}else{
+								soci.cuota="Pagada"
+							}
+
 							if(soci.codi_ball!=null){
 								
 								soci.nomBall=self.lballs[soci.codi_ball-1].nom
 							}else{
-								soci.nomBall="No Ballador"
+								soci.nomBall=null
+								
 							}
+							if(soci.codi_ball2!=null){
+								
+								soci.nomBall2=self.lballs[soci.codi_ball2-1].nom
+							}else{
+								soci.nomBall2=null
+								
+							}
+							
 							self.lsocis.push(soci)
 						})
 						
@@ -128,6 +144,24 @@ window.addEventListener('load',function(){
 					console.log(error.message)
 				 })
 				
+			},
+			pagat:function(){
+				let self=this
+				axios.put(self.baseUrl+'socis/pagat/'+self.sociSeleccionat.numerosoci,{
+				}).then(function(){
+					self.sociSeleccionat.pagat=true
+					self.sociSeleccionat.cuota=true
+					self.lsocis.forEach(function(soci){
+						if(soci.numerosoci==self.sociSeleccionat.numerosoci){
+							soci.pagat=true
+							soci.cuota="Pagada"
+						}
+					})
+
+					
+				}).catch(function (error) {
+					console.log(error.message)
+				 })
 			},
 			nouSoci:function(){
 				location.replace(this.url+'/nouSoci')

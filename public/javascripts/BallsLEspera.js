@@ -107,6 +107,7 @@ window.addEventListener('load',function(){
 								l.nom=self.lsocis[i].nom+" "+self.lsocis[i].cognoms
 								l.telefon=self.lsocis[i].telefon
 								l.telefon2=self.lsocis[i].telefon2
+								l.email=self.lsocis[i].email
 								console.log(self.ballSeleccionat.edat_minima)
 								console.log(self.lsocis[i].edat<self.ballSeleccionat.edat_minima)
 								if(self.lsocis[i].edat<self.ballSeleccionat.edat_minima){

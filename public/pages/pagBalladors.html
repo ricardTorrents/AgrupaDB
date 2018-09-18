@@ -124,7 +124,7 @@
                            Nom
                         </div>
                         
-                        <div class=" col-md-2">
+                        <div class=" col-md-1">
                             DNI
                         </div>
                         <div class=" col-md-1">
@@ -135,6 +135,9 @@
                         </div>
                         <div class=" col-md-1">
                             Telefon2
+                        </div>
+                        <div class=" col-md-1">
+                            Email
                         </div>
                         <div class=" col-md-1 icon">
                            
@@ -157,7 +160,7 @@
                                 {{enEspera.nom}}{{enEspera.cognoms}}
                             </div>
                             
-                            <div class=" col-md-2">
+                            <div class=" col-md-1">
                                 {{enEspera.dni}}
                             </div>
                             <div class=" col-md-1">
@@ -168,6 +171,12 @@
                             </div>
                             <div class=" col-md-1">
                                 {{enEspera.telefon2}}
+                            </div>
+                            <div class=" col-md-1">
+                                {{enEspera.email}}
+                            </div>
+                            <div class=" col-md-1">
+                               
                             </div>
                             <div class=" col-md-1 icon" v-if="lballadors.length!=ballSeleccionat.numparticipants" v-on:click="introdueixalBall(enEspera)">
                                 <i class="fas fa-check-circle"></i>

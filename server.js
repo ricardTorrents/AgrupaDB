@@ -15,7 +15,7 @@ var cookie=require("cookie-parser")
 pg.connect(connString).then(function(connection){
 	global.db=connection.client;
 }).then(function(){
-	console.log("Connectat!")
+	console.log("Connectat!\n")
 }).catch(function(e){
 	console.error('No es pot connectar a la BD',e);
 	return;
@@ -35,14 +35,14 @@ app.use(cookie('token'))
 app.use(sass({
 	src: path.join(__dirname,'public'),
 	dest:path.join(__dirname,'public'),
-	debug:true,
+	debug:false,
 	outputStyle:'compressed'
 }))
 app.use(express.static(path.join(__dirname, 'public')));
 app.put('/usuaris',function(req,res){
 	
 	  db.query('SELECT count(*) FROM usuaris WHERE usuari=$1 AND contrasenya=$2',[req.body.usuari,req.body.contrasenya]).then(function(result){
-		  console.log("hols")
+		  
 		  if(result.rows[0].count==1){
 			  req.session.user=req.body.usuari
 			  req.session.auth=true
@@ -181,4 +181,4 @@ app.get('/baixes',function(req,res){
  * inicialitza el servidor escoltant en el port 3000
  */
 app.listen(config.express.port);
-console.log("ServerInit");
+console.log("ServerInit\n");

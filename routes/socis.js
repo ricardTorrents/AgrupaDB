@@ -7,7 +7,7 @@ router=express.Router();
 
 router.use(bodyParser.json())
 router.use(function timeLog(req,res,next){
-	console.log('Time: ',Date.now())
+	console.log("Consulta Socis")
 	next()
 })
 /**
@@ -104,7 +104,7 @@ db.query("SELECT * FROM soci WHERE nom LIKE $1 OR lower(nom) LIKE $1 OR upper(no
 })
 router.get('/filtreCognom/:cognom',function(req,res){
 	cognom=req.params.cognom+'%'
-	console.log(cognom)
+	
 db.query("SELECT * FROM soci WHERE cognoms LIKE $1 OR lower(cognoms) LIKE $1 OR upper(cognoms) LIKE $1",[cognom]).then(function(result){
 	
 	var response=[]
@@ -199,8 +199,7 @@ router.delete('/:numerosoci',function(req,res){
 				
 			}).then(function(){
 				var s=parseInt(socis)
-				console.log(s)
-				console.log("g")
+				
 				db.query("ALTER SEQUENCE soci_numerosoci_seq RESTART WITH "+s).then(function(){
 					
 				}).then(function(){

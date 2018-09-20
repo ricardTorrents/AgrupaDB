@@ -7,7 +7,7 @@ router=express.Router();
 
 router.use(bodyParser.json())
 router.use(function timeLog(req,res,next){
-	console.log('Time: ',Date.now())
+	console.log("Consulta Baixes")
 	next()
 })
 
@@ -80,12 +80,11 @@ router.get('/filtreNom/:nom', function(req,res){
 })
 
 router.get('/filtreAny/:any', function(req,res){
-    console.log("Filtre ANY")
+    
 	var any = parseInt(req.params.any);
     var data = new Date(any,1,1);
     var datafi = new Date(any+1,1,1)
-    console.log("g")
-    console.log(datafi)
+    
     db.query('SELECT * FROM baixes WHERE data >= $1 AND data < $2', [data, datafi]).then(function(result){
         var response=result.rows
         res.send(response)

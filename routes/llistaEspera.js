@@ -7,7 +7,7 @@ router=express.Router();
 
 router.use(bodyParser.json())
 router.use(function timeLog(req,res,next){
-	console.log('Time: ',Date.now())
+	console.log("Consulta LlistaEspera");
 	next()
 })
 /**
@@ -17,7 +17,7 @@ router.get('/:dni',function(req,res){
 	dni=req.params.dni
 	
 	db.query('SELECT * FROM llistaEspera WHERE llistaEspera.dni=$1',[dni]).then(function(result){
-		console.log(result.rows[0].dni)
+		
 		res.send(result.rows)
 	}).catch(function(err){
 		console.log(err);
@@ -40,7 +40,7 @@ router.get('/ball/:codi_ball',function(req,res){
  * Modifica  un registre en la taula 
  */
 router.put('/',function(req,res){
-	console.log(req.body)
+	
 	db.query('UPDATE llistaEspera SET dni=$1,codi_ball=$2,data=$3,posicio=$4',[req.body.dni,req.body.codi_ball,req.body.data,req.body.posicio]).then(function(result){
 		res.send("200OK")
 	}).catch(function(err){
@@ -58,7 +58,7 @@ router.post('/',function(req,res){
     db.query('SELECT count(*) FROM llistaEspera WHERE codi_ball=$1',[req.body.codi_ball]).then(function(result){
         posicio=parseInt(result.rows[0].count)+1
         db.query('INSERT INTO llistaEspera(dni,codi_ball,data,posicio) values($1,$2,$3,$4)',[req.body.dni,req.body.codi_ball,d,posicio]).then(function(result){
-            console.log(result)
+            
         }).then(function(){
             res.send("200ok")
         }).catch(function(err){
@@ -73,7 +73,7 @@ router.post('/',function(req,res){
  */
 router.post('/elimina',function(req,res){
 		var i=parseInt(req.body.posicio) 
-		console.log(i)
+	
 		db.query('DELETE FROM llistaEspera WHERE dni=$1 and codi_ball=$2',[req.body.dni,req.body.codi_ball]).then(function(){
 			
 		

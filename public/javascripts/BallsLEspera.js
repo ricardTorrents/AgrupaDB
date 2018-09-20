@@ -95,6 +95,8 @@ window.addEventListener('load',function(){
 					let index =0
 					let j=0
 					let menors=[]
+					let majors=[]
+					m=0
 					self.lEspera.forEach(function(l){
 						trobat=false
 						i=0
@@ -103,6 +105,14 @@ window.addEventListener('load',function(){
 						
 						while((i<self.lsocis.length)&&(trobat==false)){
 							if(self.lsocis[i].dni==l.dni){
+								if(self.lsocis[i].edat>self.ballSeleccionat.edat_maxima){
+									let s=self.lsocis[i]
+									s.posicio=l.posicio
+									self.suprimeixLlistaEspera(s)
+									majors[m]=index
+									m=m+1
+								
+								}
 								trobat=true
 								l.nom=self.lsocis[i].nom+" "+self.lsocis[i].cognoms
 								l.telefon=self.lsocis[i].telefon
@@ -128,6 +138,9 @@ window.addEventListener('load',function(){
 						
 						})
 						menors.forEach(function(m){
+							self.lEspera.splice(m,1)
+						})
+						majors.forEach(function(m){
 							self.lEspera.splice(m,1)
 						})
 					}).catch(function (error) {
@@ -248,18 +261,22 @@ window.addEventListener('load',function(){
 			eliminaLlistaEspera(soci){
 				let self=this
 				if(confirm("Eliminar "+soci.nom+" "+soci.cognoms+" de la llista d'espera de "+self.ballSeleccionat.nom)){
-					axios.post(self.baseUrl+'llistaEspera/elimina',{
-						dni:soci.dni,
-						codi_ball:self.ballSeleccionat.codi_ball,
-						posicio:soci.posicio
-					}).then(function(){
-						let codi=(location.search).substr(1)
-							console.log(codi)
-							location.replace('http://localhost:3000/balladors?'+codi)
-					}).catch(function (error) {
-						console.log(error.message)
-					})
+					self.suprimeixLlistaEspera(soci)
 				}
+			},
+			suprimeixLlistaEspera(soci){
+				let self=this
+				axios.post(self.baseUrl+'llistaEspera/elimina',{
+					dni:soci.dni,
+					codi_ball:self.ballSeleccionat.codi_ball,
+					posicio:soci.posicio
+				}).then(function(){
+					let codi=(location.search).substr(1)
+						console.log(codi)
+						location.replace('http://localhost:3000/balladors?'+codi)
+				}).catch(function (error) {
+					console.log(error.message)
+				})
 			},
 			posaAlFinal(soci){
 				let self=this

@@ -6,7 +6,7 @@ bodyParser=require('body-parser')
 router=express.Router();
 router.use(bodyParser.json())
 router.use(function timeLog(req,res,next){
-	console.log('Time: ',Date.now())
+	console.log("Consulta Balls")
 	next()
 })
 /**
@@ -14,7 +14,7 @@ router.use(function timeLog(req,res,next){
  */
 router.get('/',function(req,res){
 	db.query("SELECT * FROM ball ORDER BY codi_ball").then(function(result){
-		console.log(result.rowCount)
+		
 		var response=result.rows
 		res.send(response)
 	}).catch(function(err){
@@ -55,7 +55,7 @@ router.post('/',function(req,res){
 	
 	
 	db.query('INSERT INTO ball(nom,sexe,numParticipants,edat_minima,edat_maxima) values($1,$2,$3,$4,$5)',[req.body.nom,req.body.sexe,req.body.numParticipants,req.body.edat_minima,req.body.edat_maxima]).then(function(result){
-		console.log(result)
+		
 	}).catch(function(err){
 		console.log(err);
 	})
@@ -66,13 +66,13 @@ router.post('/',function(req,res){
  */
 router.delete('/:codi_ball',function(req,res){
 	var codi=parseInt(req.params.codi_ball)
-		console.log("codi: "+codi)
+		
 		db.query("SELECT count(*) from ball").then(function(result){
 			var balls=result.rows[0].count
-			console.log("total balls: "+balls)
+			
 			db.query("DELETE FROM ball WHERE codi_ball=$1",[codi]).then(function(){
 				 c=codi+1
-				 console.log("ball Modifcar codi: "+c)
+				 
 				while(c<=balls){
 					
 					db.query("UPDATE ball SET codi_ball=codi_ball-1 WHERE codi_ball=$1",[c]).then(function(){

@@ -39,7 +39,7 @@ window.addEventListener('load',function(){
 					console.log(response)
 					if(response.data=="Correcte"){
 						document.getElementById("missatgeError").innerHTML=""
-						location.replace(self.url+'/socis')
+						location.replace(self.url+'/socis?1')
 					}else{
 						document.getElementById("missatgeError").innerHTML="Dades incorrectes"
 					}

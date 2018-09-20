@@ -60,7 +60,7 @@ window.addEventListener('load',function(){
 					})
             },
             cancela:function(){
-                location.replace(this.url+'/socis')
+                location.replace(this.url+'/socis?1')
             
             },
             /**
@@ -121,7 +121,7 @@ window.addEventListener('load',function(){
                                     codi_ball:self.lballs[i].codi_ball
                                    
                                 }).then(function(response,body){
-                                    location.replace(self.url+'/socis')
+                                    location.replace(self.url+'/socis?1')
                                 }).catch(function (error) {
                                     console.log(error.message)
                 

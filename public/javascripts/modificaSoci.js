@@ -24,7 +24,8 @@ window.addEventListener('load',function(){
             lEspera:[],
             lballs:[],
             lballs1:[],
-            lballs2:[]
+            lballs2:[],
+            num:''
 			
 		},
 		mounted: function () {
@@ -38,7 +39,7 @@ window.addEventListener('load',function(){
              */
             carregaDades:function(){
                 let self=this
-               let num=(location.search).substr(1)
+                self.num=(location.search).substr(1)
               
                
                axios.get(self.baseUrl +'socis/'+num).then(function(response){
@@ -124,7 +125,7 @@ window.addEventListener('load',function(){
              * Cancela la modificacio de socis i retorna a la pagina de socis
              */
             cancela:function(){
-                location.replace(this.url+'/socis')
+                location.replace(this.url+'/socis?'+this.num)
             
             },
             /**
@@ -166,7 +167,7 @@ window.addEventListener('load',function(){
                                 dni:self.soci.dni,
                                 codi_ball:self.lballs[i].codi_ball
                             }).then(function(response,body){
-                                location.replace(self.url+'/socis')
+                                location.replace(this.url+'/socis?'+self.num)
                             }).catch(function (error) {
                                 console.log(error.message)
             

@@ -18,9 +18,9 @@ INSERT INTO ball (nom,sexe,numParticipants,edat_minima,edat_maxima) VALUES('Vale
 
 
 
-CREATE TABLE soci (dni varchar(9) NOT NULL PRIMARY KEY,numeroSoci serial NOT NULL UNIQUE,numeroRegistre serial NOT NULL UNIQUE,nom varchar(50) NOT NULL,cognoms varchar(50) NOT NULL,data_naixement date NOT NULL,adreça varchar(100) NOT NULL,ciutat varchar(50) NOT NULL,email varchar(20) NOT NULL,telefon varchar(9) NOT NULL,telefon2 varchar(9),sexe varchar(1) NOT NULL,codi_ball  int REFERENCES ball(codi_ball),codi_ball2  int REFERENCES ball(codi_ball),pagat boolean NOT NULL);
+CREATE TABLE soci (dni varchar(9) NOT NULL PRIMARY KEY,numeroSoci serial NOT NULL UNIQUE,numeroRegistre serial NOT NULL UNIQUE,nom varchar(50) NOT NULL,cognoms varchar(50) NOT NULL,data_naixement date NOT NULL,adreça varchar(100) NOT NULL,ciutat varchar(50) NOT NULL,email varchar(50) NOT NULL,telefon varchar(9) NOT NULL,telefon2 varchar(9),sexe varchar(1) NOT NULL,codi_ball  int REFERENCES ball(codi_ball),codi_ball2  int REFERENCES ball(codi_ball),dataPagament date);
 
-INSERT INTO soci(dni,nom,cognoms,data_naixement,adreça,ciutat,email,telefon,telefon2,sexe,pagat) values('47633129Z','Ricard','Torrents Cunill','1992-01-27','Av cubells 58','Vilanova i la Geltru','torrents_27@hotmail.com','690128171','938154475','H',false);
+INSERT INTO soci(dni,nom,cognoms,data_naixement,adreça,ciutat,email,telefon,telefon2,sexe) values('47633129Z','Ricard','Torrents Cunill','1992-01-27','Av cubells 58','Vilanova i la Geltru','torrents_27@hotmail.com','690128171','938154475','H');
 
 
 CREATE TABLE balladors(dni varchar(9) NOT NULL REFERENCES soci(dni),codi_ball int NOT NULL REFERENCES ball(codi_ball), PRIMARY KEY (dni,codi_ball));

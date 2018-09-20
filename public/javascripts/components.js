@@ -35,7 +35,7 @@ new Vue({
 		},
 		mostraPagSocis:function(){
 	
-			location.replace(this.url+'/socis')
+			location.replace(this.url+'/socis?1')
 		},
 		mostraPagBalls:function(){
 				

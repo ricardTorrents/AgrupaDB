@@ -46,8 +46,11 @@
 
             <div id="llistaSocis" class="col-md-2">
                 <div id="capsLsocis" class="row">
-                    <div class="retorna" class="col-md-1" v-on:click="retornaInici">
+                    <div class="retorna" class="col-md-1" v-if="!filter" v-on:click="paginaAnterior">
                         <i class='fas fa-arrow-left' style="cursor:pointer;"></i>
+                    </div>
+                    <div class="retorna" class="col-md-1" v-if="!filter" v-on:click="paginaSeguent">
+                        <i class='fas fa-arrow-right' style="cursor:pointer;"></i>
                     </div>
                     <strong class="col-md-10">Socis Agrupació de Balls Populars</strong>
                     <div id="afegeixSoci" class="col-md-1" v-on:click="nouSoci">
@@ -55,11 +58,32 @@
                     </div>
 
                 </div>
+                <div id="capsLsocis" class="row">
+                    <select class="col-md-3" id="seleccionaFiltre">
+                        <option>Cognom</option>
+                        <option>Nom</option>
+                        <option>DNI</option>
+                    </select>
+                    <div  class="col-md-4">
+                        <input type="text" class="form-control" id="campText">
+                    </div>
+                    <div  class="col-md-2" >
+                        <button type="button"  class="btn btn-primary" v-on:click="filtre">Cerca </button>
+
+                    </div>
+                    <div  class="col-md-2" v-if="filter" v-on:click="EliminarFiltre" style="cursor: pointer;">
+                            <i class="fas fa-times-circle"></i>
+                    </div>
+                </div>
+                
 
                 <div id=lSocis class="row">
+                    <div  id="missatgeError" class="row">
+                        
+                    </div>
                     <div class=" row soci " style="cursor: pointer;" v-on:click="mostraDetallSoci(soci)" v-for="soci in lsocis">
                         <div class=" col-md-1" v-if="soci.pagat==false" style="color:red;">
-                            <i class="fas fa-times-circle"></i>
+                                <i class="fas fa-times-circle"></i>
                         </div>
                         <div class=" col-md-1" v-if="soci.pagat==true" style="color:greenyellow;">
                             <i class="fas fa-check-circle"></i>
@@ -168,7 +192,7 @@
                     <div class="row campDetall" >
                         <strong class="col-sm-7">Cuota</strong>
                         <div>
-                            {{sociSeleccionat.cuota}}
+                            {{sociSeleccionat.datapagament}}
                         </div>
                     </div>
                     <div id="lespera">

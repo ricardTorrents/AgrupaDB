@@ -39,10 +39,11 @@ window.addEventListener('load',function(){
              */
             carregaDades:function(){
                 let self=this
-                self.num=(location.search).substr(1)
+                this.num=(location.search).substr(1)
+                console.log(this.num)
               
                
-               axios.get(self.baseUrl +'socis/'+num).then(function(response){
+               axios.get(self.baseUrl +'socis/'+self.num).then(function(response){
                    self.soci=response.data[0]
                    d=new Date(self.soci.data_naixement)
                    let avui= new Date()

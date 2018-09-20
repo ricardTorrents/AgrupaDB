@@ -18,6 +18,6 @@
     "node-sass-middleware": "",
     "pg": "",
     "pg-promise-simple": "",
-    "express-session":""
+    "express-session": ""
   }
 }

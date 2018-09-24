@@ -177,6 +177,37 @@ app.get('/baixes',function(req,res){
 	}
 	
 });
+
+app.get('/musics',function(req,res){
+	
+
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/musics.html');
+	}
+	
+});
+app.get('/modificaMusic',function(req,res){
+	
+
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/modificaMusic.html');
+	}
+	
+});
+app.get('/insertaMusic',function(req,res){
+	
+
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/insertaMusic.html');
+	}
+	
+});
 /** 
  * inicialitza el servidor escoltant en el port 3000
  */

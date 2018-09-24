@@ -31,3 +31,5 @@ CREATE TABLE llistaEspera (dni varchar(9) NOT NULL REFERENCES soci(dni),codi_bal
 CREATE TABLE baixes( dni varchar(9) NOT NULL, nom varchar(50) NOT NULL, cognoms varchar(100) NOT NULL, motiu varchar(1000), data date NOT NULL, PRIMARY KEY (dni,data));
 
 CREATE TABLE usuaris(usuari varchar(20) NOT NULL,contrasenya varchar(20) NOT NULL, PRIMARY KEY (usuari,contrasenya));
+
+CREATE TABLE musics(nom varchar(20) NOT NULL PRIMARY KEY,nparticipants int NOT NULL, telefon varchar(9) NOT NULL, telefon2 varchar(9), email varchar(50), tipus varchar(20) );

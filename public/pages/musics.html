@@ -1,0 +1,169 @@
+<html>
+<!--Pagina pagina que mostra llista Socis i detall soci seleccionat , permet accedir a la pagina per inserir un nou soci  i per modificar un existent-->
+
+<head>
+
+    <title id="titulHead">AgrupaDB</title>
+    <meta charset="UTF-8">
+
+    <script src="javascripts/llibreries/jquery-3.3.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script> -->
+    <script src="javascripts/llibreries/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	 crossorigin="anonymous"></script> -->
+    <script src="javascripts/llibreries/fontawesome.js"></script>
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+	 crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="stylesheets/llibreries/bootstrap.min.css">
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	 crossorigin="anonymous"> -->
+    <script src="javascripts/llibreries/solid.js"></script>
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+	 crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="stylesheets/llibreries/fonts.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Rock+Salt|Roboto" rel="stylesheet"> -->
+    <script src="javascripts/llibreries/vue.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
+    <!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="/javascripts/musics.js"></script>
+    <script src="/javascripts/components.js"></script>
+
+</head>
+
+
+<body>
+    <div id="vueComponent">
+        <div id="caps"></div>
+
+
+    </div>
+    <div id="vueMusics">
+
+        <div id="pagMusics" class="row">
+
+
+            <div id="llistaMusics" class="col-md-2">
+                <div id="capsLmusics" class="row">
+                    <div class="retorna" class="col-md-1" v-if="!filter">
+                        <i class='fas fa-arrow-left' style="cursor:pointer;"></i>
+                    </div>
+                    <div class="retorna" class="col-md-1" v-if="!filter" >
+                        <i class='fas fa-arrow-right' style="cursor:pointer;"></i>
+                    </div>
+                    
+                    <strong class="col-md-10">Socis Agrupació de Balls Populars</strong>
+                    <div class="retorna" class="col-md-1"  v-on:click="insertaMusic">
+                        <i class='fas fa-plus' style="cursor:pointer;"></i>
+                    </div>
+
+                </div>
+                <div id="capsLmusics" class="row">
+                    <select class="col-md-3" id="seleccionaFiltre" v-on:click="comprovaTipus">
+                        <option>Nom</option>
+                        <option>Tipus</option>
+                       
+                    </select>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" v-if="filtreTipus==false" id="campText">
+                        <select  id="campText"  v-if="filtreTipus==true">
+                            <option>Flabiol</option>
+                            <option>Grallers</option>
+                           
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-primary" v-on:click="filtre">Cerca </button>
+
+                    </div>
+                    <div class="col-md-2" v-if="filter" style="cursor: pointer;"v-on:click="tancaFiltre">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                </div>
+
+
+                <div id=lMusics class="row">
+                    <div id="missatgeError" class="row">
+
+                    </div>
+                    <div class=" row music " style="cursor: pointer;" v-for="music in lmusics" v-on:click="seleccionaMusic(music)">
+                        <div class=" col-md-2">
+                            {{music.nom}}
+                        </div>
+                        <div class=" col-md-4">
+                            {{music.nparticipants}}
+                        </div>
+                        <div class=" col-md-4">
+                            {{music.poblacio}}
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div id="detallMusics" class="col-md-6">
+                <div id=musicsDetall>
+                    <div id="capsDetallMusics">
+                        <strong style="display: inline-block; width: 60%;">{{musicSeleccionat.nom}}</strong>
+                        <div style="cursor: pointer;" v-on:click="modificaMusic">
+                            <i class="fas fa-edit"></i>
+                        </div>
+
+
+                    </div>
+                    <div class="row campDetall">
+
+                        <strong class="col-sm-7">Numero de participants:</strong>
+                        <div>
+                            {{musicSeleccionat.nparticipants}}
+                        </div>
+                    </div>
+                    <div class="row campDetall">
+
+                        <strong class="col-sm-7">Telefon:</strong>
+                        <div>
+                            {{musicSeleccionat.telefon}}
+                        </div>
+                    </div>
+                    <div class="row campDetall">
+
+                        <strong class="col-sm-7">Telefon 2:</strong>
+                        <div>
+                            {{musicSeleccionat.telefon2}}
+                        </div>
+                    </div>
+
+                    <div class="row campDetall">
+
+                        <strong class="col-sm-7">Email:</strong>
+                        <div>
+                            {{musicSeleccionat.email}}
+                        </div>
+                    </div>
+                    <div class="row campDetall">
+
+                        <strong class="col-sm-7">Poblacio:</strong>
+                        <div>
+                            {{musicSeleccionat.poblacio}}
+                        </div>
+                    </div>
+
+                    <div class="row campDetall">
+
+                        <strong class="col-sm-7">Tipus:</strong>
+                        <div>
+                            {{musicSeleccionat.tipus}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

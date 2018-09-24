@@ -3,7 +3,7 @@ var balls=require('./balls')
 var balladors=require('./balladors')
 var llistaEspera=require('./llistaEspera')
 var baixes=require('./baixes')
-
+var musics=require('./musics')
 /**
  * 
  * @param {} app 
@@ -16,6 +16,6 @@ exports.create=function(app){
 	app.use(baseAPI+'/balladors',balladors)
 	app.use(baseAPI+'/llistaEspera',llistaEspera)
 	app.use(baseAPI+'/baixes',baixes)
-	
+	app.use(baseAPI+'/musics',musics)
 	
 }

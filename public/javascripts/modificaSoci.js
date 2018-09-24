@@ -219,7 +219,11 @@ window.addEventListener('load',function(){
                     console.log("cancelat")
                 }
 
-            }
+            },
+            cancelea:function(){
+
+                location.replace(self.url+'/musics'+self.num)
+            },
 
         }
     

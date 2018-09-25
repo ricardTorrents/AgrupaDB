@@ -28,7 +28,7 @@
     <!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="stylesheets/style.css">
-    <script src="/javascripts/musics.js"></script>
+    <script src="/javascripts/ballExtern.js"></script>
     <script src="/javascripts/components.js"></script>
 
 </head>
@@ -40,33 +40,29 @@
 
 
     </div>
-    <div id="vueMusics">
+    <div id="vueBallsExterns">
 
-        <div id="pagMusics" class="row">
+        <div id="pagBallsExterns" class="row">
 
 
-            <div id="llistaMusics" class="col-md-2">
-                <div id="capsLmusics" class="row">
+            <div id="llistaBallsExterns" class="col-md-2">
+                <div id="capsLBallsExterns" class="row">
                   
-                    <strong class="col-md-5">Socis Agrupació de Balls Populars</strong>
-                    <div class="retorna" class="col-md-1"  v-on:click="insertaMusic">
+                    <strong class="col-md-5">Balls Externs</strong>
+                    <div class="retorna" class="col-md-1"  v-on:click="insertaBallExtern">
                         <i class='fas fa-plus' style="cursor:pointer;"></i>
                     </div>
 
                 </div>
-                <div id="capsLmusics" class="row">
-                    <select class="col-md-3" id="seleccionaFiltre" v-on:click="comprovaTipus">
+                <div id="capsLBallsExterns" class="row">
+                    <select class="col-md-3" id="seleccionaFiltre" >
                         <option>Nom</option>
-                        <option>Tipus</option>
+                        <option>Poblacio</option>
                        
                     </select>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" v-if="filtreTipus==false" id="campText">
-                        <select  id="campText"  v-if="filtreTipus==true">
-                            <option>Flabiol</option>
-                            <option>Grallers</option>
-                           
-                        </select>
+                        <input type="text" class="form-control"  id="campText">
+                        
                     </div>
                     <div class="col-md-2">
                         <button type="button" class="btn btn-primary" v-on:click="filtre">Cerca </button>
@@ -78,19 +74,19 @@
                 </div>
 
 
-                <div id=lMusics class="row">
+                <div id=lBallsExterns class="row">
                     <div id="missatgeError" class="row">
 
                     </div>
-                    <div class=" row music " style="cursor: pointer;" v-for="music in lmusics" v-on:click="seleccionaMusic(music)">
+                    <div class=" row ballExtern " style="cursor: pointer;" v-for="ballExtern in lBallExtern" v-on:click="seleccionaBallExtern(ballExtern)">
                         <div class=" col-md-2">
-                            {{music.nom}}
+                            {{ballExtern.nom}}
                         </div>
                         <div class=" col-md-4">
-                            {{music.nparticipants}}
+                            {{ballExtern.nparticipants}}
                         </div>
                         <div class=" col-md-4">
-                            {{music.poblacio}}
+                            {{ballExtern.poblacio}}
                         </div>
 
                     </div>
@@ -100,11 +96,11 @@
 
             </div>
 
-            <div id="detallMusics" class="col-md-6">
-                <div id=musicsDetall>
-                    <div id="capsDetallMusics">
-                        <strong style="display: inline-block; width: 60%;">{{musicSeleccionat.nom}}</strong>
-                        <div style="cursor: pointer;" v-on:click="modificaMusic">
+            <div id="detallBallExtern" class="col-md-6">
+                <div id=ballExternDetall>
+                    <div id="capsDetallBallExtern">
+                        <strong style="display: inline-block; width: 60%;">{{ballExternSeleccionat.nom}}</strong>
+                        <div style="cursor: pointer;" v-on:click="modificaBallExtern">
                             <i class="fas fa-edit"></i>
                         </div>
 
@@ -114,21 +110,21 @@
 
                         <strong class="col-sm-7">Numero de participants:</strong>
                         <div>
-                            {{musicSeleccionat.nparticipants}}
+                            {{ballExternSeleccionat.nparticipants}}
                         </div>
                     </div>
                     <div class="row campDetall">
 
                         <strong class="col-sm-7">Telefon:</strong>
                         <div>
-                            {{musicSeleccionat.telefon}}
+                            {{ballExternSeleccionat.telefon}}
                         </div>
                     </div>
                     <div class="row campDetall">
 
                         <strong class="col-sm-7">Telefon 2:</strong>
                         <div>
-                            {{musicSeleccionat.telefon2}}
+                            {{ballExternSeleccionat.telefon2}}
                         </div>
                     </div>
 
@@ -136,24 +132,18 @@
 
                         <strong class="col-sm-7">Email:</strong>
                         <div>
-                            {{musicSeleccionat.email}}
+                            {{ballExternSeleccionat.email}}
                         </div>
                     </div>
                     <div class="row campDetall">
 
                         <strong class="col-sm-7">Poblacio:</strong>
                         <div>
-                            {{musicSeleccionat.poblacio}}
+                            {{ballExternSeleccionat.poblacio}}
                         </div>
                     </div>
 
-                    <div class="row campDetall">
-
-                        <strong class="col-sm-7">Tipus:</strong>
-                        <div>
-                            {{musicSeleccionat.tipus}}
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>

@@ -1,0 +1,82 @@
+<html>
+<!--Pagina amb formulari per modificar un Soci, permet eliminar soci-->
+<head>
+
+    <title id="titulHead">AgrupaDB</title>
+    <meta charset="UTF-8">
+    <script src="javascripts/llibreries/jquery-3.3.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script> -->
+    <script src="javascripts/llibreries/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	 crossorigin="anonymous"></script> -->
+    <script src="javascripts/llibreries/fontawesome.js"></script>
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+	 crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="stylesheets/llibreries/bootstrap.min.css">
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	 crossorigin="anonymous"> -->
+    <script src="javascripts/llibreries/solid.js"></script>
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+	 crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="stylesheets/llibreries/fonts.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Rock+Salt|Roboto" rel="stylesheet"> -->
+    <script src="javascripts/llibreries/vue.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
+    <!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="/javascripts/insertaBallExtern.js"></script>
+    <script src="/javascripts/components.js"></script>
+
+</head>
+
+
+<body>
+    <div id="vueComponent">
+        <div id="caps"></div>
+
+
+    </div>
+    <div id="vueInsertaBallExtern">
+       
+        <div id="pagInsertaBallExtern">
+            <div id=FormInsertaBallExtern>
+                <div class="form-group">
+                    <label for="ballExternNom">Nom:</label>
+                    <input type="text" class="form-control" id="ballExternNom" v-bind:value="ballExtern.nom">
+                </div>
+                <div class="form-group">
+                    <label for="ballExternNparticipants">Numero Participants:</label>
+                    <input type="text" class="form-control" id="ballExternNparticipants" v-bind:value="ballExtern.nparticipants">
+                </div>
+                <div class="form-group">
+                    <label for="ballExternTelefon">Telefon:</label>
+                    <input type="text" class="form-control" id="ballExternTelefon" v-bind:value="ballExtern.telefon"> </div>
+                <div class="form-group">
+                    <label for="ballExternTelefon2">Telefon 2:</label>
+                    <input type="text" class="form-control" id="ballExternTelefon2" v-bind:value="ballExtern.telefon2">
+                </div>
+                <div class="form-group">
+                    <label for="ballExternPoblacio">Ciutat:</label>
+                    <input type="text" class="form-control" id="ballExternPoblacio" v-bind:value="ballExtern.poblacio">
+                </div>
+
+                <div class="form-group">
+                    <label for="ballExternEmail">Adreça Electronica:</label>
+                    <input type="email" class="form-control" id="ballExternEmail" v-bind:value="ballExtern.email">
+                </div>
+                
+               
+            <div id="botoInertaBallExtern">
+                <button type="button" class="btn btn-primary" v-on:click="cancela">Cancela</button>
+                <button type="button" class="btn btn-primary" v-on:click="inserta">Modifica </button>
+               
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+</html>

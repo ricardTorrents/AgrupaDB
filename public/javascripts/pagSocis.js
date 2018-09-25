@@ -321,6 +321,9 @@ window.addEventListener('load',function(){
 			modificasoci:function(){
 				location.replace(this.url+'/modificaSoci?'+this.sociSeleccionat.numerosoci)
 			},
+			pagImpresio:function(){
+				location.replace(this.url+'/imprimeixSocis')
+			}
 		
 		}
 	})

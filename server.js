@@ -208,6 +208,46 @@ app.get('/insertaMusic',function(req,res){
 	}
 	
 });
+app.get('/ballsExterns',function(req,res){
+	
+
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/ballsExterns.html');
+	}
+	
+});
+app.get('/modificaballsExterns',function(req,res){
+	
+
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/modificaBallExtern.html');
+	}
+	
+});
+app.get('/insertaBallExtern',function(req,res){
+	
+
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/insertaBallExtern.html');
+	}
+	
+});
+app.get('/imprimeixSocis',function(req,res){
+	
+
+	if(req.session.auth!=true){
+		res.sendFile(__dirname+'/public/index.html');
+	}else{
+		res.sendFile(__dirname+'/public/pages/impresioSocis.html');
+	}
+	
+});
 /** 
  * inicialitza el servidor escoltant en el port 3000
  */

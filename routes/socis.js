@@ -42,6 +42,18 @@ db.query("SELECT count(*) FROM soci").then(function(result){
 })
 
 })
+router.get('/impresio',function(req,res){
+	
+	db.query("SELECT numerosoci,nom,cognoms,dni,email,dataPagament FROM soci ORDER BY numerosoci ").then(function(result){
+		
+		
+		res.send(result.rows)
+	}).catch(function(err){
+		console.log(err);
+	})
+	
+	})
+
 router.get('/paginacio/:numerosoci',function(req,res){
 		ninicial=parseInt(req.params.numerosoci)
 		nfinal=ninicial+20

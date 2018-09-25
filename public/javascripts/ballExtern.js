@@ -11,69 +11,69 @@ window.addEventListener('load',function(){
 	
 
 	new Vue({
-		el: '#vueMusics',
+		el: '#vueBallsExterns',
 		
 		data:{
 			url:'',
 			baseUrl:'http://localhost:3000/api/',
-			musicSeleccionat:'',
-			musicBuit:{
+			ballExternSeleccionat:'',
+			ballExternBuit:{
 				nom:"--",
 				nparticipants:0,
 				telefon:"--",
 				telefon2:"--",
 				poblacio:"---",
 				email:"---",
-				tipus:"indeterminat"
+				
 
 			},
-			filtreTipus:false,
-			lmusics:[],
 			
-			nomMusic:'',
+			lBallExtern:[],
+			
+			
 			total:'',
 			filter:false,
-			noMusics:false
+			noBallExtern:false
 			
 		},
 		mounted: function () {
 			this.baseUrl='http://'+location.host+'/api/'
 			this.url='http://'+location.host
-			this.carrregaMusics()
+			this.carregaBallExtern()
 			
 			
 		},
 		methods: {
-            carrregaMusics:function(){
+            carregaBallExtern:function(){
 				let self=this
 				
-				axios.get(self.baseUrl +'musics').then(function(response){
+				axios.get(self.baseUrl +'ballsExterns').then(function(response){
 					
-                    self.lmusics=(response.data)
-                    if(self.lmusics[0]==null){
-						self.musicSeleccionat=self.musicBuit
-						self.noMusics=true
+                    self.lBallExtern=(response.data)
+                    if(self.lBallExtern[0]==null){
+						self.ballExternSeleccionat=self.ballExternBuit
+						self.noBallExtern=true
 						document.getElementById("missatgeError").innerHTML="No hi ha resultats"
 					}else{
 						document.getElementById("missatgeError").innerHTML=""
-						self.musicSeleccionat=self.lmusics[0]
+						self.ballExternSeleccionat=self.lBallExtern[0]
 					}
                     
 				}).catch(function (error) {
 					console.log(error.message)
 			  })
 			},
-			modificaMusic:function(){
+			modificaBallExtern:function(){
 				let self=this
-				if(self.noMusics==false){
-					location.replace(self.url+'/modificaMusic?'+this.musicSeleccionat.nom)
+				if(self.noBallExtern==false){
+					location.replace(self.url+'/modificaballsExterns?'+this.ballExternSeleccionat.nom)
 				}
 				
 			},
 			tancaFiltre:function(){
 				console.log("g")
 				this.filter=false
-				this.carrregaMusics()
+				this.carregaBallExtern()
 			},
 			filtre:function(){
 					this.filter=true
@@ -81,8 +81,8 @@ window.addEventListener('load',function(){
 					let tipus=document.getElementById("seleccionaFiltre").value
 					
 				
-					if(tipus=="Tipus"){
-						urlTipus="filtreTipus"
+					if(tipus=="Poblacio"){
+						urlTipus="filtrePoblacio"
 						
 					}
 					if(tipus=="Nom"){
@@ -90,16 +90,16 @@ window.addEventListener('load',function(){
 					}
 
 					let self=this
-					axios.get(self.baseUrl +'musics/'+urlTipus+'/'+valor).then(function(response){
+					axios.get(self.baseUrl +'ballsExterns/'+urlTipus+'/'+valor).then(function(response){
 					
-						self.lmusics=(response.data)
-						if(self.lmusics[0]==null){
-							self.musicSeleccionat=self.musicBuit
-							self.noMusics=true
+						self.lBallExtern=(response.data)
+						if(self.lBallExtern[0]==null){
+							self.ballExternSeleccionat=self.ballExternBuit
+							self.noBallExtern=true
 							document.getElementById("missatgeError").innerHTML="No hi ha resultats"
 						}else{
 							document.getElementById("missatgeError").innerHTML=""
-							self.musicSeleccionat=self.lmusics[0]
+							self.ballExternSeleccionat=self.lBallExtern[0]
 						}
 						
 						
@@ -108,20 +108,14 @@ window.addEventListener('load',function(){
 				  })
 				
 			},
-			comprovaTipus: function(){
-				if(document.getElementById("seleccionaFiltre").value=="Tipus"){
-					this.filtreTipus= true
-				}else{
-					this.filtreTipus= false
-				}
-			},
-			insertaMusic:function(){
+			
+			insertaBallExtern:function(){
 				console.log("hola")
-				location.replace(this.url+'/insertaMusic')
+				location.replace(this.url+'/insertaBallExtern')
 			},
 			
-			seleccionaMusic:function(music){
-				this.musicSeleccionat=music
+			seleccionaBallExtern:function(ball){
+				this.ballExternSeleccionat=ball
 			}
         }
     })

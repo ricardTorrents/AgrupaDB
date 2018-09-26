@@ -26,35 +26,30 @@
 	<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
 	<!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<link rel="stylesheet" href="stylesheets/style.css">
-	<script src="javascripts/agrupa.js"></script>
-	<script src="/javascripts/components.js"></script>
+	<link rel="stylesheet" href="stylesheets/login.css">
+	<!-- <script src="javascripts/agrupa.js"></script> -->
+	
 </head>
 
 <body>
-	<div id="vueComponent">
-		<div id="caps"></div>
-		
-
-	
-</div>
-	<div id="vue">
-
-		<div id="pagInici" class="row">
-			<div id="socis" class="col-md-2">
-				<div class="img-circle center-block " v-on:click="mostraPagSocis" title="Socis" style="cursor:pointer;">
-					<i class="fas fa-user iconPicture"></i>
-				</div>
-			</div>
-			<div id="balls" class="col-md-2">
-				<div class="img-circle center-block " v-on:click="mostraPagBalls" title="Balls" style="cursor:pointer;">
-					<i class="fas fa-music iconPicture"></i>
-				</div>
-			</div>
-
+	<div class = "row" id ="pantallaLogin">
+		<div class = "col-md-5">
+				<img id="imatgeLogin"src='/images/agrupa.png' />
 		</div>
-
-
+		<div class = "col-md-2"> 
+			Base de dades Agrupació de balls populars de Vilanova i la Geltrú
+		</div>
+		<div class = "col-md-3"> 
+				<div class="form-group">
+						<label for="usuari">Usuari:</label>
+						<input type="text" class="form-control" id="usuari" >
+					</div>
+					<div class="form-group">
+						<label for="contrasenya">Contrasenya::</label>
+						<input type="password" class="form-control" id="contrasenya" >
+					</div>
+					</div>
+		</div>
 	</div>
 </body>
 

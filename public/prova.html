@@ -33,21 +33,26 @@
 
 <body>
 	<div class = "row" id ="pantallaLogin">
-		<div class = "col-md-5">
+		<div class = "col-md-5" id ="imatge">
 				<img id="imatgeLogin"src='/images/agrupa.png' />
 		</div>
-		<div class = "col-md-2"> 
-			Base de dades Agrupació de balls populars de Vilanova i la Geltrú
+		<div class = "col-md-2" id="lletres"> 
+			<strong>Gestor de base de dades</strong> 
 		</div>
-		<div class = "col-md-3"> 
-				<div class="form-group">
+		<div class = "col-md-3"id="formulari"> 
+				<div class="form-group" >
 						<label for="usuari">Usuari:</label>
 						<input type="text" class="form-control" id="usuari" >
 					</div>
 					<div class="form-group">
-						<label for="contrasenya">Contrasenya::</label>
+						<label for="contrasenya">Contrasenya:</label>
 						<input type="password" class="form-control" id="contrasenya" >
 					</div>
+					<div id="botoLogin">
+						<button type="button" id="boto" class="btn btn-primary" v-on:click="login">Entra</button>
+						
+					</div>
+					<div id="missatgeError"></div>
 					</div>
 		</div>
 	</div>

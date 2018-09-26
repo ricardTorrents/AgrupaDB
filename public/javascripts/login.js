@@ -14,7 +14,7 @@ window.addEventListener('load',function(){
 	
 
 	new Vue({
-		el: '#vueLogin',
+		el: '#pantallaLogin',
 		
 		data:{
 			baseUrl:'',

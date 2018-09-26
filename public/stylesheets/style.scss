@@ -550,83 +550,10 @@
 	}
 	
 }
-#vueMusics{
-		
-	#pagMusics{
-		
-		height: 93vh;
-		#llistaMusics{
-			width:50%;
-			#capsLmusics{
-				margin-left:20px;
-				margin-top: 20px;		
-				font-size: 20px;
-				border-left: 2px solid #1aa3ff;
-				border-top: 2px solid #1aa3ff;
-				border-right: 2px solid #1aa3ff;
-		
-			}
-			#lMusics{
-				margin-left:20px;
+
 	
-				background-color:white;
-		
-				height: 93vh;
-				overflow-y: scroll;
-				vertical-align:center;
-				text-align:center;
-				color:black;
-				border:2px solid #1aa3ff;
-				.music{
-					border-bottom: 1px solid #1aa3ff;
-					width: 100%;
-					font-size: 20px;
-					color:black;
-					margin-right: 0%;
-					padding-right: 0;
-		
-				}
-		
-			}
-			
-		}
-	
-		#detallMusics{
-			border-left: 2px solid #1aa3ff;
-			height: 100%;
-			padding: 2%;
-		}
-		#musicsDetall{
-		
-			padding-top: 2%;
-			padding-left: 2%;
-			padding-right: 2%;
-			border:1px solid #1aa3ff;
-			
-			width: 100%;
-		}
-		
-		
-		
-		#capsDetallMusics{
-			text-align: center;
-			margin-top: 5px;
-			margin-bottom: 5px;
-			font-size: 20px;
-			margin-bottom: 30px;
-			
-			
-		}
-	
-	}
-	
-	#afegiexMusics{
-		display: inline-block;
-		margin-top: 0%;
-		margin-left: 30%
-		
-	}
-}
+
+
 #vueModificaMusic{
 	#pagModificaMusic{
 	

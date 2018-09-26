@@ -50,7 +50,9 @@ window.addEventListener('load',function(){
 				axios.get(self.baseUrl +'musics').then(function(response){
 					
                     self.lmusics=(response.data)
-                    if(self.lmusics[0]==null){
+                    
+				}).then(function(){
+					if(self.lmusics[0]==null){
 						self.musicSeleccionat=self.musicBuit
 						self.noMusics=true
 						document.getElementById("missatgeError").innerHTML="No hi ha resultats"
@@ -61,7 +63,7 @@ window.addEventListener('load',function(){
                     
 				}).catch(function (error) {
 					console.log(error.message)
-			  })
+			  	})
 			},
 			modificaMusic:function(){
 				let self=this
@@ -90,6 +92,7 @@ window.addEventListener('load',function(){
 					}
 
 					let self=this
+					
 					axios.get(self.baseUrl +'musics/'+urlTipus+'/'+valor).then(function(response){
 					
 						self.lmusics=(response.data)

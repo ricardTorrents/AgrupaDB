@@ -1,0 +1,58 @@
+$blauAgrupa: #2D57B4;
+#header{
+	padding: 1%;
+    margin: 0%;
+    height: 15vh;
+	color:$blauAgrupa;
+    border-top: 5px solid $blauAgrupa;
+    border-bottom: 5px solid $blauAgrupa;
+	text-align:center;
+	#socis{
+		
+		font-size: 70px;
+	}
+	#balls{
+		margin-left: 30%;
+		font-size: 70px;
+	}
+	img{
+		width: 50%;
+		height: 85%;
+	}
+	
+	.separator{
+		height: 3%;
+	}
+	#menu{
+		font-size:70px;
+		
+		text-align: center;
+		vertical-align:-webkit-baseline-middle;
+	}
+	#dropdown{
+		font-size: 20px;
+		margin-left: 30%;
+		padding: 5%;
+		background-color: $blauAgrupa;
+		#usuari{
+			padding: 10%;
+		}
+		.dropdown-item{
+			background-color:white;
+			border: 0.5px solid $blauAgrupa;
+			padding: 1%;
+			
+		}
+	}
+}
+#peu{
+    height: 6vh;
+    margin: 0%;
+    color:$blauAgrupa;
+    text-align:center;
+    font-style: oblique;
+    border-top: 5px solid $blauAgrupa;
+    border-bottom: 5px solid $blauAgrupa;
+
+    
+}

@@ -1,10 +1,11 @@
 <html>
-<!--Pagina inicial, permet accedir a pagian de socis i pagina de balls-->
+<!--Pagina pagina que mostra llista Socis i detall soci seleccionat , permet accedir a la pagina per inserir un nou soci  i per modificar un existent-->
 
 <head>
 
 	<title id="titulHead">AgrupaDB</title>
 	<meta charset="UTF-8">
+
 	<script src="javascripts/llibreries/jquery-3.3.1.min.js"></script>
 	<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	 crossorigin="anonymous"></script> -->
@@ -26,35 +27,160 @@
 	<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
 	<!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<link rel="stylesheet" href="stylesheets/login.css">
-	<!-- <script src="javascripts/agrupa.js"></script> -->
-	
+	<link rel='stylesheet' href='stylesheets/musics.css'>
+	<script src="/javascripts/musics.js"></script>
+	<script src="/javascripts/components.js"></script>
+
 </head>
 
+
 <body>
-	<div class = "row" id ="pantallaLogin">
-		<div class = "col-md-5" id ="imatge">
-				<img id="imatgeLogin"src='/images/agrupa.png' />
+	<div id="vueComponent">
+		<div id="caps"></div>
+
+
+	</div>
+	<div id="vueMusics">
+
+		<div id="pagMusics" class="row">
+
+
+			<div id="llistaMusics" class="col-md-2">
+				<div id="llista">
+					<div id="capsalera" class="row">
+						<strong id="titol" class="col-md-2">Musics</strong>
+						<select class="col-md-3" id="seleccionaFiltre" v-on:click="comprovaTipus">
+							<option>Nom</option>
+							<option>Tipus</option>
+
+						</select>
+						<div class="col-md-4">
+							<input type="text" class="form-control" v-if="filtreTipus==false" id="campText">
+							<select id="campText" v-if="filtreTipus==true">
+								<option>Flabiol</option>
+								<option>Grallers</option>
+
+							</select>
+						</div>
+						<div class="col-md-2">
+							<button type="button" id="boto" class="btn btn-primary " v-on:click="filtre">Cerca </button>
+						</div>
+						<div id="tancaFiltre" class="col-md-1" v-if="filter" style="cursor: pointer;" v-on:click="tancaFiltre">
+							<i class="fas fa-times-circle "></i>
+						</div>
+
+					</div>
+
+					<div id="capsaleraLlista" class="row">
+						<div class=" col-md-2">
+							<strong>Nom</strong>
+						</div>
+						<div class=" col-md-4">
+							<strong>Participants</strong>
+						</div>
+						<div class=" col-md-4">
+							<strong>Població</strong>
+						</div>
+
+						<div class="retorna" class="col-md-1" v-on:click="insertaMusic">
+							<i class='fas fa-plus' style="cursor:pointer;"></i>
+						</div>
+
+					</div>
+					<div id=missatgeError></div>
+					<div class=" row music " style="cursor: pointer;" v-for="music in lmusics" v-on:click="seleccionaMusic(music)">
+						<div class=" col-md-2">
+							{{music.nom}}
+						</div>
+						<div class=" col-md-4">
+							{{music.nparticipants}}
+						</div>
+						<div class=" col-md-4">
+							{{music.poblacio}}
+						</div>
+
+					</div>
+				</div>
+
+				<div id="paginacio">
+					<div class="icone">
+						<i class='fas fa-arrow-left' style="cursor:pointer;"></i>
+					</div>
+					<strong>1/1</strong>
+					<div class="icone">
+						<i class='fas fa-arrow-right' style="cursor:pointer;"></i>
+					</div>
+				</div>
+			</div>
+
+			<div id="detallMusics" class="col-md-6">
+				<div id=detall>
+					<div id="NomMusic">
+						<strong>{{musicSeleccionat.nom}}</strong>
+						<div style="cursor: pointer;" v-on:click="modificaMusic">
+							<i class="fas fa-edit"></i>
+						</div>
+
+					</div>
+					<div id="cosDetall">
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Numero de participants:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{musicSeleccionat.nparticipants}}
+							</div>
+						</div>
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Telefon:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{musicSeleccionat.telefon}}
+							</div>
+						</div>
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Telefon 2:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{musicSeleccionat.telefon2}}
+							</div>
+						</div>
+
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Email:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{musicSeleccionat.email}}
+							</div>
+						</div>
+						<div class="row">
+							<div class="titolDetall">
+								<strong>Poblacio:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{musicSeleccionat.poblacio}}
+							</div>
+
+						</div>
+
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Tipus:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{musicSeleccionat.tipus}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class = "col-md-2" id="lletres"> 
-			<strong>Gestor de base de dades</strong> 
-		</div>
-		<div class = "col-md-3"id="formulari"> 
-				<div class="form-group" >
-						<label for="usuari">Usuari:</label>
-						<input type="text" class="form-control" id="usuari" >
-					</div>
-					<div class="form-group">
-						<label for="contrasenya">Contrasenya:</label>
-						<input type="password" class="form-control" id="contrasenya" >
-					</div>
-					<div id="botoLogin">
-						<button type="button" id="boto" class="btn btn-primary" v-on:click="login">Entra</button>
-						
-					</div>
-					<div id="missatgeError"></div>
-					</div>
-		</div>
+	</div>
+	<div id='peu'>
+
 	</div>
 </body>
 

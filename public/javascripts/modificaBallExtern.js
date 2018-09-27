@@ -95,13 +95,12 @@ window.addEventListener('load',function(){
                 if(confirm("Estas segur d'eliminar el ball "+this.ballExtern.nom+"?")){
                 
                     let self=this
-                    let nom=(location.search).substr(1)
-                    console.log(nom)
+                   
                     axios.delete(self.baseUrl +'ballsExterns/'+self.num,{
                     
                     }).then(function(response){
                        
-                            location.replace(self.url+'/ballsExterns?'+self.num)
+                            location.replace(self.url+'/ballsExterns?1')
                         }).catch(function (error) {
                             console.log(error.message)
         

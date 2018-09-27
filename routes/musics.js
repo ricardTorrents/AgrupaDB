@@ -18,6 +18,26 @@ router.get('/',function(req,res){
 		console.log(err);
 	})
 })
+router.get('/paginacio/:numero',function(req,res){
+	var numero=req.params.numero
+	var numerofi=numero+20
+	db.query("SELECT * FROM musics where numero>=$1 AND numero<$2",[numero,numerofi]).then(function(result){
+        res.send(result.rows)
+    }).catch(function(err){
+		console.log(err);
+	})
+})
+router.get('/total',function(req,res){
+	
+	db.query("SELECT count(*) FROM musics").then(function(result){
+		
+		
+		res.send(result.rows[0].count)
+	}).catch(function(err){
+		console.log(err);
+	})
+	
+	})
 router.get('/:numero',function(req,res){
 	var numero = req.params.numero
 	

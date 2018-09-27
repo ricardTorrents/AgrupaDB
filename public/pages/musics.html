@@ -101,16 +101,17 @@
 
 					</div>
 				</div>
-
 				<div id="paginacio">
-					<div class="icone">
-						<i class='fas fa-arrow-left' style="cursor:pointer;"></i>
+						<div class="icone" v-on:click="paginaAnterior"  v-if="primerapagina==false">
+							<i class='fas fa-arrow-left' v-if="primerapagina==false" style="cursor:pointer;"></i>
+						</div>
+						
+						<strong>{{pagActual}}/{{nUltima}}</strong>
+	
+						<div class="icone"  v-on:click="paginaSeguent" v-if="ultimapagina==false">
+							<i class='fas fa-arrow-right' v-if="ultimapagina==false" style="cursor:pointer;"></i>
+						</div>
 					</div>
-					<strong>1/1</strong>
-					<div class="icone">
-						<i class='fas fa-arrow-right' style="cursor:pointer;"></i>
-					</div>
-				</div>
 			</div>
 
 			<div id="detallMusics" class="col-md-6">

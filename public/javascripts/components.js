@@ -59,10 +59,10 @@ new Vue({
 		  })
 		},
 		mostraMusics:function(){
-			location.replace(this.url+'/musics')
+			location.replace(this.url+'/musics?1')
 		},
 		mostraBallsExterns:function(){
-			location.replace(this.url+'/ballsExterns')
+			location.replace(this.url+'/ballsExterns?1')
 		},
 	  }
    

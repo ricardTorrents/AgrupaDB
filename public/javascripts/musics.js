@@ -33,21 +33,55 @@ window.addEventListener('load',function(){
 			nomMusic:'',
 			total:'',
 			filter:false,
-			noMusics:false
+			noMusics:false,
+			nUltima:'',
+			pagActual:'',
+			numini:'',
+			ultimapagina:false,
+			primerapagina:true,
+			total:'',
 			
 		},
 		mounted: function () {
 			this.baseUrl='http://'+location.host+'/api/'
 			this.url='http://'+location.host
-			this.carrregaMusics()
+			let numero=(location.search).substr(1)
+			this.totalMusics()
+			this.carrregaMusics(numero)
+			
+			
 			
 			
 		},
 		methods: {
-            carrregaMusics:function(){
+			totalMusics:function(){
 				let self=this
 				
-				axios.get(self.baseUrl +'musics').then(function(response){
+				axios.get(self.baseUrl +'musics/total').then(function(response){
+					
+					self.total=parseInt(response.data)
+					
+				}).then(function(){
+					
+					if(self.total<=20){
+						console.log("hol")
+						self.ultimapagina=true
+					}
+					self.nUltima=parseInt(self.total/21)+1
+					console.log(self.ultimapagina)
+				}).catch(function (error) {
+					console.log(error.message)
+			  })
+			},
+            carrregaMusics:function(numero){
+				let self=this
+				console.log(numero)
+				self.numini=parseInt(numero)-(parseInt(numero)%20)+1
+				self.pagActual=parseInt(parseInt(numero)/20)+1
+				console.log(self.numini)
+				let numeroArray=parseInt(numero)-self.numini
+				
+				axios.get(self.baseUrl +'musics/paginacio/'+self.numini).then(function(response){
 					
                     self.lmusics=(response.data)
                     
@@ -58,12 +92,39 @@ window.addEventListener('load',function(){
 						document.getElementById("missatgeError").innerHTML="No hi ha resultats"
 					}else{
 						document.getElementById("missatgeError").innerHTML=""
-						self.musicSeleccionat=self.lmusics[0]
+						self.musicSeleccionat=self.lmusics[numeroArray]
 					}
                     
 				}).catch(function (error) {
 					console.log(error.message)
 			  	})
+			},
+			paginaSeguent:function(){
+				let self=this
+				let n=this.numini+20
+				if(n<=this.total){
+					this.primerapagina=false
+					self.lmusics=[]
+					self.numero=n
+					this.carrregaMusics(n)
+					if(n+20>=this.total){
+						this.ultimapagina=true
+					}
+				}
+
+			},
+			paginaAnterior:function(){
+				let self=this
+				let n=this.numini-20
+				if(n>=1){
+					this.lmusics=false
+					self.lBallExtern=[]
+					self.numero=n
+					self.carrregaMusics(n)
+					if(n-20<=0){
+						self.primerapagina=true
+					}
+				}
 			},
 			modificaMusic:function(){
 				let self=this
@@ -75,7 +136,8 @@ window.addEventListener('load',function(){
 			tancaFiltre:function(){
 				console.log("g")
 				this.filter=false
-				this.carrregaMusics()
+				let numero=(location.search).substr(1)
+				this.carrregaMusics(numero)
 			},
 			filtre:function(){
 					this.filter=true
@@ -124,6 +186,7 @@ window.addEventListener('load',function(){
 			},
 			
 			seleccionaMusic:function(music){
+				
 				this.musicSeleccionat=music
 			}
         }

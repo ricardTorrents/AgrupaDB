@@ -54,7 +54,7 @@ window.addEventListener('load',function(){
                 }).then(function(response,body){
                     
                           
-                    location.replace(self.url+'/musics'+self.num)
+                    location.replace(self.url+'/musics?1')
                 }).catch(function (error) {
                     console.log(error.message)
             
@@ -66,7 +66,7 @@ window.addEventListener('load',function(){
             },
             cancela:function(){
 
-                location.replace(this.url+'/musics')
+                location.replace(this.url+'/musics?1')
             },
 
         }

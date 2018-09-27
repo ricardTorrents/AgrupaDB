@@ -104,7 +104,7 @@ window.addEventListener('load',function(){
                     
                     }).then(function(response){
                        
-                            location.replace(self.url+'/musics')
+                            location.replace(self.url+'/musics?1')
                         }).catch(function (error) {
                             console.log(error.message)
         

@@ -12,7 +12,7 @@ router.use(function timeLog(req,res,next){
 })
 
 router.get('/',function(req,res){
-	db.query("SELECT * FROM musics").then(function(result){
+	db.query("SELECT * FROM musics ORDER BY numero").then(function(result){
         res.send(result.rows)
     }).catch(function(err){
 		console.log(err);
@@ -21,7 +21,7 @@ router.get('/',function(req,res){
 router.get('/paginacio/:numero',function(req,res){
 	var numero=req.params.numero
 	var numerofi=numero+20
-	db.query("SELECT * FROM musics where numero>=$1 AND numero<$2",[numero,numerofi]).then(function(result){
+	db.query("SELECT * FROM musics where numero>=$1 AND numero<$2 ORDER BY numero",[numero,numerofi]).then(function(result){
         res.send(result.rows)
     }).catch(function(err){
 		console.log(err);

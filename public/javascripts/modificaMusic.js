@@ -21,7 +21,6 @@ window.addEventListener('load',function(){
 			baseUrl:'1',
             music:'',
             edat:'',
-            
             num:''
 			
 		},
@@ -36,12 +35,13 @@ window.addEventListener('load',function(){
              */
             carregaDades:function(){
                 let self=this
-                this.nom=(location.search).substr(1)
-                console.log(this.nom)
+                self.num=(location.search).substr(1)
+                
               
-               
-               axios.get(self.baseUrl +'musics/'+self.nom).then(function(response){
+               console.log(self.num)
+               axios.get(self.baseUrl +'musics/'+self.num).then(function(response){
                    self.music=response.data[0]
+
                    console.log(response.data[0].poblacio)
                   
                   
@@ -55,7 +55,7 @@ window.addEventListener('load',function(){
            
             
             cancela:function(){
-                location.replace(this.url+'/musics'+this.num)
+                location.replace(this.url+'/musics?'+this.num)
             
             },
             /**
@@ -74,13 +74,14 @@ window.addEventListener('load',function(){
                     telefon2:document.getElementById("musicTelefon2").value,
                    
                     poblacio:document.getElementById("musicPoblacio").value,
-                    tipus:self.music.tipus
+                    tipus:self.music.tipus,
+                    numero:self.music.numero
                  
                 
                 }).then(function(response,body){
                     
                           
-                    location.replace(self.url+'/musics'+self.num)
+                    location.replace(self.url+'/musics?'+self.num)
                 }).catch(function (error) {
                     console.log(error.message)
             
@@ -115,11 +116,7 @@ window.addEventListener('load',function(){
                 }
 
             },
-            cancelea:function(){
-
-                location.replace(self.url+'/musics'+self.num)
-            },
-
+            
         }
     
     })

@@ -66,7 +66,7 @@ window.addEventListener('load',function(){
 			modificaBallExtern:function(){
 				let self=this
 				if(self.noBallExtern==false){
-					location.replace(self.url+'/modificaballsExterns?'+this.ballExternSeleccionat.nom)
+					location.replace(self.url+'/modificaballsExterns?'+this.ballExternSeleccionat.numero)
 				}
 				
 			},

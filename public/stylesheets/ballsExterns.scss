@@ -1,0 +1,99 @@
+$colorAgrupa:#2D57B4;
+#pagBallsExterns{
+    height: 79vh;
+    width: 100vw;
+    padding: 0%;
+    margin: 0%;
+    #llistaBallsExterns{
+        width: 48%;
+        height: 75vh;
+        margin: 1%;
+        border: 5px solid $colorAgrupa;
+       
+        #llista{
+
+            height: 95%;
+            #capsalera{
+                height: 7%;
+                padding: 0.5%;
+                border-bottom: 5px solid $colorAgrupa;
+                #titol{
+                    padding: 0.5%;
+                    text-align:center;
+                    font-style: oblique;
+                    font-size: 20px;
+                    color:$colorAgrupa;
+                }
+                #boto{
+                    background-color:$colorAgrupa;
+                }
+                #tancaFiltre{
+                    padding: 0.2%;
+                    color:red;
+                    font-size: 25px;
+                    text-align: center
+                }
+            }
+            #capsaleraLlista{
+                height: 4%;
+                padding: 0.2%;
+                font-size: 20px;
+                border-bottom: 2px solid $colorAgrupa;
+                text-align: center;
+            }
+            
+            .ballExtern{
+                height: 4%;
+                padding: 0.2%;
+                font-size: 20px;
+                text-align: center;
+                border-bottom: 2px solid $colorAgrupa;
+            }
+        }
+        #paginacio{
+            height:5%;
+            font-size: 20px;
+            text-align: center;
+            color:$colorAgrupa;
+            .icone{
+                display: inline;
+            }
+        }
+    }
+    #detallBallExtern{
+        height: 75vh;
+        width: 48%;
+        margin: 1%;
+        border: 5px solid $colorAgrupa;
+        #detall{
+            width: 100%;
+           
+            #nomBallExtern{
+                text-align: center;
+                font-size: 25px;
+                padding-top: 5%;
+            }
+            #cosDetall{
+                 padding: 15%;
+                 font-size: 20px;
+                .titolDetall{
+                    margin-top: 1%;
+                    display: inline-block;
+                    width: 50%;
+                    text-align: left;
+                
+                    
+                }
+                .contingutDetall{
+                    margin-top: 1%;
+                    display: inline-block;
+                    width: 30%;
+                    text-align: right;
+                    
+                }
+
+            }
+         
+        }
+    }
+}

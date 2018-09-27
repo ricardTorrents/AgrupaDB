@@ -3,151 +3,174 @@
 
 <head>
 
-    <title id="titulHead">AgrupaDB</title>
-    <meta charset="UTF-8">
+	<title id="titulHead">AgrupaDB</title>
+	<meta charset="UTF-8">
 
-    <script src="javascripts/llibreries/jquery-3.3.1.min.js"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	<script src="javascripts/llibreries/jquery-3.3.1.min.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	 crossorigin="anonymous"></script> -->
-    <script src="javascripts/llibreries/bootstrap.min.js"></script>
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	<script src="javascripts/llibreries/bootstrap.min.js"></script>
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	 crossorigin="anonymous"></script> -->
-    <script src="javascripts/llibreries/fontawesome.js"></script>
-    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+	<script src="javascripts/llibreries/fontawesome.js"></script>
+	<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
 	 crossorigin="anonymous"></script> -->
-    <link rel="stylesheet" href="stylesheets/llibreries/bootstrap.min.css">
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	<link rel="stylesheet" href="stylesheets/llibreries/bootstrap.min.css">
+	<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	 crossorigin="anonymous"> -->
-    <script src="javascripts/llibreries/solid.js"></script>
-    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+	<script src="javascripts/llibreries/solid.js"></script>
+	<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
 	 crossorigin="anonymous"></script> -->
-    <link rel="stylesheet" href="stylesheets/llibreries/fonts.css">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Rock+Salt|Roboto" rel="stylesheet"> -->
-    <script src="javascripts/llibreries/vue.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
-    <!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="stylesheets/style.css">
-    <script src="/javascripts/ballExtern.js"></script>
-    <script src="/javascripts/components.js"></script>
+	<link rel="stylesheet" href="stylesheets/llibreries/fonts.css">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Rock+Salt|Roboto" rel="stylesheet"> -->
+	<script src="javascripts/llibreries/vue.min.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
+	<!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<link rel='stylesheet' href='stylesheets/ballsExterns.css'>
+	<script src="/javascripts/ballExtern.js"></script>
+	<script src="/javascripts/components.js"></script>
 
 </head>
 
 
 <body>
-    <div id="vueComponent">
-        <div id="caps"></div>
+	<div id="vueComponent">
+		<div id="caps"></div>
 
 
-    </div>
-    <div id="vueBallsExterns">
+	</div>
+	<div id="vueBallsExterns">
 
-        <div id="pagBallsExterns" class="row">
-
-
-            <div id="llistaBallsExterns" class="col-md-2">
-                <div id="capsLBallsExterns" class="row">
-                  
-                    <strong class="col-md-5">Balls Externs</strong>
-                    <div class="retorna" class="col-md-1"  v-on:click="insertaBallExtern">
-                        <i class='fas fa-plus' style="cursor:pointer;"></i>
-                    </div>
-
-                </div>
-                <div id="capsLBallsExterns" class="row">
-                    <select class="col-md-3" id="seleccionaFiltre" >
-                        <option>Nom</option>
-                        <option>Poblacio</option>
-                       
-                    </select>
-                    <div class="col-md-4">
-                        <input type="text" class="form-control"  id="campText">
-                        
-                    </div>
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-primary" v-on:click="filtre">Cerca </button>
-
-                    </div>
-                    <div class="col-md-2" v-if="filter" style="cursor: pointer;"v-on:click="tancaFiltre">
-                        <i class="fas fa-times-circle"></i>
-                    </div>
-                </div>
+		<div id="pagBallsExterns" class="row">
 
 
-                <div id=lBallsExterns class="row">
-                    <div id="missatgeError" class="row">
+			<div id="llistaBallsExterns" class="col-md-2">
+				<div id="llista">
+					<div id="capsalera" class="row">
+						<strong id="titol" class="col-md-2">Balls Externs</strong>
+						<select class="col-md-3" id="seleccionaFiltre" >
+							<option>Nom</option>
+							<option>Poblacio</option>
 
-                    </div>
-                    <div class=" row ballExtern " style="cursor: pointer;" v-for="ballExtern in lBallExtern" v-on:click="seleccionaBallExtern(ballExtern)">
-                        <div class=" col-md-2">
-                            {{ballExtern.nom}}
-                        </div>
-                        <div class=" col-md-4">
-                            {{ballExtern.nparticipants}}
-                        </div>
-                        <div class=" col-md-4">
-                            {{ballExtern.poblacio}}
-                        </div>
+						</select>
+						<div class="col-md-4">
+							<input type="text" class="form-control"  id="campText">
+							
+						</div>
+						<div class="col-md-2">
+							<button type="button" id="boto" class="btn btn-primary " v-on:click="filtre">Cerca </button>
+						</div>
+						<div id="tancaFiltre" class="col-md-1" v-if="filter" style="cursor: pointer;" v-on:click="tancaFiltre">
+							<i class="fas fa-times-circle "></i>
+						</div>
 
-                    </div>
-                </div>
+					</div>
 
+					<div id="capsaleraLlista" class="row">
+						<div class=" col-md-2">
+							<strong>Nom</strong>
+						</div>
+						<div class=" col-md-4">
+							<strong>Participants</strong>
+						</div>
+						<div class=" col-md-4">
+							<strong>Població</strong>
+						</div>
 
+						<div  class="col-md-1" v-on:click="insertaBallExtern">
+							<i class='fas fa-plus' style="cursor:pointer;"></i>
+						</div>
 
-            </div>
+					</div>
+					<div id=missatgeError></div>
+					<div class=" row ballExtern " style="cursor: pointer;" v-for="ballExtern in lBallExtern" v-on:click="seleccionaBallExtern(ballExtern)">
+						<div class=" col-md-2">
+							{{ballExtern.nom}}
+						</div>
+						<div class=" col-md-4">
+							{{ballExtern.nparticipants}}
+						</div>
+						<div class=" col-md-4">
+							{{ballExtern.poblacio}}
+						</div>
 
-            <div id="detallBallExtern" class="col-md-6">
-                <div id=ballExternDetall>
-                    <div id="capsDetallBallExtern">
-                        <strong style="display: inline-block; width: 60%;">{{ballExternSeleccionat.nom}}</strong>
-                        <div style="cursor: pointer;" v-on:click="modificaBallExtern">
-                            <i class="fas fa-edit"></i>
-                        </div>
+					</div>
+				</div>
 
+				<div id="paginacio">
+					<div class="icone">
+						<i class='fas fa-arrow-left' style="cursor:pointer;"></i>
+					</div>
+					<strong>1/1</strong>
+					<div class="icone">
+						<i class='fas fa-arrow-right' style="cursor:pointer;"></i>
+					</div>
+				</div>
+			</div>
 
-                    </div>
-                    <div class="row campDetall">
+			<div id="detallBallExtern" class="col-md-6">
+				<div id=detall>
+					<div id="nomBallExtern">
+						<strong>{{ballExternSeleccionat.nom}}</strong>
+						<div style="cursor: pointer;" v-on:click="modificaBallExtern">
+							<i class="fas fa-edit"></i>
+						</div>
 
-                        <strong class="col-sm-7">Numero de participants:</strong>
-                        <div>
-                            {{ballExternSeleccionat.nparticipants}}
-                        </div>
-                    </div>
-                    <div class="row campDetall">
+					</div>
+					<div id="cosDetall">
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Numero de participants:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{ballExternSeleccionat.nparticipants}}
+							</div>
+						</div>
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Telefon:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{ballExternSeleccionat.telefon}}
+							</div>
+						</div>
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Telefon 2:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{ballExternSeleccionat.telefon2}}
+							</div>
+						</div>
 
-                        <strong class="col-sm-7">Telefon:</strong>
-                        <div>
-                            {{ballExternSeleccionat.telefon}}
-                        </div>
-                    </div>
-                    <div class="row campDetall">
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Email:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{ballExternSeleccionat.email}}
+							</div>
+						</div>
+						<div class="row">
+							<div class="titolDetall">
+								<strong>Poblacio:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{ballExternSeleccionat.poblacio}}
+							</div>
 
-                        <strong class="col-sm-7">Telefon 2:</strong>
-                        <div>
-                            {{ballExternSeleccionat.telefon2}}
-                        </div>
-                    </div>
+						</div>
 
-                    <div class="row campDetall">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id='peu'>
 
-                        <strong class="col-sm-7">Email:</strong>
-                        <div>
-                            {{ballExternSeleccionat.email}}
-                        </div>
-                    </div>
-                    <div class="row campDetall">
-
-                        <strong class="col-sm-7">Poblacio:</strong>
-                        <div>
-                            {{ballExternSeleccionat.poblacio}}
-                        </div>
-                    </div>
-
-                   
-                </div>
-            </div>
-        </div>
-    </div>
+	</div>
 </body>
 
 </html>

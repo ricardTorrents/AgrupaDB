@@ -68,7 +68,7 @@ window.addEventListener('load',function(){
 			modificaMusic:function(){
 				let self=this
 				if(self.noMusics==false){
-					location.replace(self.url+'/modificaMusic?'+this.musicSeleccionat.nom)
+					location.replace(self.url+'/modificaMusic?'+this.musicSeleccionat.numero)
 				}
 				
 			},

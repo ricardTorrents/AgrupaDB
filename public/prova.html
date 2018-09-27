@@ -27,8 +27,8 @@
 	<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
 	<!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<link rel='stylesheet' href='stylesheets/musics.css'>
-	<script src="/javascripts/musics.js"></script>
+	<link rel='stylesheet' href='stylesheets/balls.css'>
+	<script src="/javascripts/pagBalls.js"></script>
 	<script src="/javascripts/components.js"></script>
 
 </head>
@@ -40,64 +40,56 @@
 
 
 	</div>
-	<div id="vueMusics">
+	<div id="vuepagBalls">
 
-		<div id="pagMusics" class="row">
+		<div id="pagBalls" class="row">
 
 
-			<div id="llistaMusics" class="col-md-2">
+			<div id="llistaBalls" class="col-md-2">
 				<div id="llista">
 					<div id="capsalera" class="row">
-						<strong id="titol" class="col-md-2">Musics</strong>
-						<select class="col-md-3" id="seleccionaFiltre" v-on:click="comprovaTipus">
+						<strong id="titol" class="col-md-2">Balls</strong>
+						<select class="col-md-3" id="seleccionaFiltre">
 							<option>Nom</option>
-							<option>Tipus</option>
+
 
 						</select>
 						<div class="col-md-4">
-							<input type="text" class="form-control" v-if="filtreTipus==false" id="campText">
-							<select id="campText" v-if="filtreTipus==true">
-								<option>Flabiol</option>
-								<option>Grallers</option>
+							<input type="text" class="form-control" id="campText">
 
-							</select>
 						</div>
 						<div class="col-md-2">
-							<button type="button" id="boto" class="btn btn-primary " v-on:click="filtre">Cerca </button>
+							<button type="button" id="boto" class="btn btn-primary " >Cerca </button>
 						</div>
-						<div id="tancaFiltre" class="col-md-1" v-if="filter" style="cursor: pointer;" v-on:click="tancaFiltre">
+						<div id="tancaFiltre" class="col-md-1" v-if="filter" style="cursor: pointer;" >
 							<i class="fas fa-times-circle "></i>
 						</div>
 
 					</div>
 
 					<div id="capsaleraLlista" class="row">
-						<div class=" col-md-2">
+						<div class=" col-md-4">
+							<strong>Codi Ball</strong>
+						</div>
+						<div class=" col-md-6">
 							<strong>Nom</strong>
 						</div>
-						<div class=" col-md-4">
-							<strong>Participants</strong>
-						</div>
-						<div class=" col-md-4">
-							<strong>Població</strong>
-						</div>
 
-						<div class="retorna" class="col-md-1" v-on:click="insertaMusic">
+
+						<div class="col-md-1" v-on:click="nouBall">
 							<i class='fas fa-plus' style="cursor:pointer;"></i>
 						</div>
 
 					</div>
 					<div id=missatgeError></div>
-					<div class=" row music " style="cursor: pointer;" v-for="music in lmusics" v-on:click="seleccionaMusic(music)">
-						<div class=" col-md-2">
-							{{music.nom}}
-						</div>
+					<div class=" row ball " style="cursor: pointer;" v-for="ball in lballs" v-on:click="mostraDetallBall(ball)">
 						<div class=" col-md-4">
-							{{music.nparticipants}}
+							{{ball.codi_ball}}
 						</div>
-						<div class=" col-md-4">
-							{{music.poblacio}}
+						<div class=" col-md-6">
+							{{ball.nom}}
 						</div>
+
 
 					</div>
 				</div>
@@ -113,11 +105,11 @@
 				</div>
 			</div>
 
-			<div id="detallMusics" class="col-md-6">
+			<div id="detallBall" class="col-md-6">
 				<div id=detall>
-					<div id="NomMusic">
-						<strong>{{musicSeleccionat.nom}}</strong>
-						<div style="cursor: pointer;" v-on:click="modificaMusic">
+					<div id="nomBall">
+						<strong>{{ballSeleccionat.nom}}</strong>
+						<div style="cursor: pointer;" v-on:click="modificaball">
 							<i class="fas fa-edit"></i>
 						</div>
 
@@ -125,56 +117,54 @@
 					<div id="cosDetall">
 						<div class="row ">
 							<div class="titolDetall">
+								<strong>Codi ball:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{ballSeleccionat.codi_ball}}
+							</div>
+						</div>
+						<div class="row ">
+							<div class="titolDetall">
 								<strong>Numero de participants:</strong>
 							</div>
 							<div class="contingutDetall">
-								{{musicSeleccionat.nparticipants}}
+								{{ballSeleccionat.numparticipants}}
 							</div>
 						</div>
 						<div class="row ">
 							<div class="titolDetall">
-								<strong>Telefon:</strong>
+								<strong>Sexe:</strong>
 							</div>
 							<div class="contingutDetall">
-								{{musicSeleccionat.telefon}}
+								{{ballSeleccionat.sexe}}
 							</div>
 						</div>
 						<div class="row ">
 							<div class="titolDetall">
-								<strong>Telefon 2:</strong>
+								<strong>Edat Minima :</strong>
 							</div>
 							<div class="contingutDetall">
-								{{musicSeleccionat.telefon2}}
+								{{ballSeleccionat.edat_minima}}
 							</div>
 						</div>
 
 						<div class="row ">
 							<div class="titolDetall">
-								<strong>Email:</strong>
+								<strong>Edat Maxima:</strong>
 							</div>
 							<div class="contingutDetall">
-								{{musicSeleccionat.email}}
+								{{ballSeleccionat.edat_maxima}}
 							</div>
 						</div>
-						<div class="row">
-							<div class="titolDetall">
-								<strong>Poblacio:</strong>
-							</div>
-							<div class="contingutDetall">
-								{{musicSeleccionat.poblacio}}
-							</div>
-
-						</div>
-
-						<div class="row ">
-							<div class="titolDetall">
-								<strong>Tipus:</strong>
-							</div>
-							<div class="contingutDetall">
-								{{musicSeleccionat.tipus}}
-							</div>
+						
+							
+							
+						
+						<div id="gestionaBall">
+								<button type="button" id="botoGestiona" class="btn btn-primary " v-on:click="balladors">Gestiona Ball </button>
 						</div>
 					</div>
+					
 				</div>
 			</div>
 		</div>

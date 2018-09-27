@@ -36,11 +36,11 @@ window.addEventListener('load',function(){
              */
             carregaDades:function(){
                 let self=this
-                this.nom=(location.search).substr(1)
+                this.num=(location.search).substr(1)
                 console.log(this.nom)
               
                
-               axios.get(self.baseUrl +'ballsExterns/'+self.nom).then(function(response){
+               axios.get(self.baseUrl +'ballsExterns/'+self.num).then(function(response){
                    self.ballExtern=response.data[0]
                    console.log(response.data[0].poblacio)
                   
@@ -54,10 +54,7 @@ window.addEventListener('load',function(){
 
            
             
-            cancela:function(){
-                location.replace(this.url+'/ballsExterns'+this.num)
-            
-            },
+           
             /**
              * Realitza un Update del soci a la base de dades, tambe crea nous registres en la llista d'espera si es necessari.
             */
@@ -74,13 +71,14 @@ window.addEventListener('load',function(){
                     telefon2:document.getElementById("ballExternTelefon2").value,
                    
                     poblacio:document.getElementById("ballExternPoblacio").value,
+                    numero:self.ballExtern.numero
                     
                  
                 
                 }).then(function(response,body){
                     
                           
-                    location.replace(self.url+'/ballsExterns'+self.num)
+                    location.replace(self.url+'/ballsExterns?'+self.num)
                 }).catch(function (error) {
                     console.log(error.message)
             
@@ -99,11 +97,11 @@ window.addEventListener('load',function(){
                     let self=this
                     let nom=(location.search).substr(1)
                     console.log(nom)
-                    axios.delete(self.baseUrl +'ballsExterns/'+nom,{
+                    axios.delete(self.baseUrl +'ballsExterns/'+self.num,{
                     
                     }).then(function(response){
                        
-                            location.replace(self.url+'/ballsExterns')
+                            location.replace(self.url+'/ballsExterns?'+self.num)
                         }).catch(function (error) {
                             console.log(error.message)
         
@@ -115,9 +113,9 @@ window.addEventListener('load',function(){
                 }
 
             },
-            cancelea:function(){
+            cancela:function(){
 
-                location.replace(self.url+'/ballsExterns'+self.num)
+                location.replace(this.url+'/ballsExterns?'+this.num)
             },
 
         }

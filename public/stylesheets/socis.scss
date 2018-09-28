@@ -1,10 +1,11 @@
 $colorAgrupa:#2D57B4;
-#pagMusics{
+#pagSocis{
     height: 79vh;
     width: 100vw;
     padding: 0%;
     margin: 0%;
-    #llistaMusics{
+    overflow-y: hidden;
+    #llistaSocis{
         width: 48%;
         height: 75vh;
         margin: 1%;
@@ -37,6 +38,12 @@ $colorAgrupa:#2D57B4;
                     font-size: 25px;
                     text-align: center
                 }
+                #print{
+                    padding: 0.2%;
+                    
+                    font-size: 25px;
+                    text-align: center
+                }
             }
             #capsaleraLlista{
                 height: 4%;
@@ -46,7 +53,7 @@ $colorAgrupa:#2D57B4;
                 text-align: center;
             }
             
-            .music{
+            .soci{
                 height: 4%;
                 padding: 0.2%;
                 font-size: 1.5vh;
@@ -64,7 +71,7 @@ $colorAgrupa:#2D57B4;
             }
         }
     }
-    #detallMusics{
+    #detallSoci{
         height: 75vh;
         width: 48%;
         margin: 1%;
@@ -72,14 +79,15 @@ $colorAgrupa:#2D57B4;
         #detall{
             width: 100%;
            
-            #NomMusic{
+            #nomSoci{
                 text-align: center;
                 font-size: 25px;
                 padding-top: 5%;
             }
             #cosDetall{
                  padding: 15%;
-                 font-size: 20px;
+                 padding-top: 5%;
+                 font-size: 1.5vh;
                 .titolDetall{
                     margin-top: 1%;
                     display: inline-block;
@@ -93,9 +101,34 @@ $colorAgrupa:#2D57B4;
                     display: inline-block;
                     width: 30%;
                     text-align: right;
+            
                     
                 }
 
+            }
+            #pagats{
+                margin-top:2%; 
+                text-align: center;
+                #botopagats{
+                    width: 15%;
+                    height: 3vh;
+                    font-size: 1.5vh;
+                    background-color: $colorAgrupa;
+                }
+            }
+            #lespera{
+                margin-top: 5%;
+                
+                padding: 2%;
+                border: 2.5px solid $colorAgrupa;
+                height: 20vh;
+                overflow-y: scroll;
+                #capsLespera{
+                    text-align: center
+                }
+                #llistaEspera{
+                    text-align: center;
+                }
             }
          
         }

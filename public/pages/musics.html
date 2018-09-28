@@ -49,14 +49,14 @@
 				<div id="llista">
 					<div id="capsalera" class="row">
 						<strong id="titol" class="col-md-2">Musics</strong>
-						<select class="col-md-3" id="seleccionaFiltre" v-on:click="comprovaTipus">
+						<select class="col-md-3 filtre" id="seleccionaFiltre" v-on:click="comprovaTipus">
 							<option>Nom</option>
 							<option>Tipus</option>
 
 						</select>
 						<div class="col-md-4">
-							<input type="text" class="form-control" v-if="filtreTipus==false" id="campText">
-							<select id="campText" v-if="filtreTipus==true">
+							<input type="text" class="form-control filtre" v-if="filtreTipus==false" id="campText">
+							<select id="campText" class="filtre" v-if="filtreTipus==true">
 								<option>Flabiol</option>
 								<option>Grallers</option>
 

@@ -1,227 +1,271 @@
 <html>
 <!--Pagina pagina que mostra llista Socis i detall soci seleccionat , permet accedir a la pagina per inserir un nou soci  i per modificar un existent-->
+
 <head>
 
-    <title id="titulHead">AgrupaDB</title>
-    <meta charset="UTF-8">
+	<title id="titulHead">AgrupaDB</title>
+	<meta charset="UTF-8">
 
-    <script src="javascripts/llibreries/jquery-3.3.1.min.js"></script>
+	<script src="javascripts/llibreries/jquery-3.3.1.min.js"></script>
 	<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	 crossorigin="anonymous"></script> -->
-	 <script src="javascripts/llibreries/bootstrap.min.js"></script>
-	 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	<script src="javascripts/llibreries/bootstrap.min.js"></script>
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	 crossorigin="anonymous"></script> -->
-	 <script src="javascripts/llibreries/fontawesome.js"></script>
-	 <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+	<script src="javascripts/llibreries/fontawesome.js"></script>
+	<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
 	 crossorigin="anonymous"></script> -->
-	 <link rel="stylesheet" href="stylesheets/llibreries/bootstrap.min.css">
+	<link rel="stylesheet" href="stylesheets/llibreries/bootstrap.min.css">
 	<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	 crossorigin="anonymous"> -->
-	 <script src="javascripts/llibreries/solid.js"></script>
+	<script src="javascripts/llibreries/solid.js"></script>
 	<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
 	 crossorigin="anonymous"></script> -->
-	 <link rel="stylesheet" href="stylesheets/llibreries/fonts.css">
+	<link rel="stylesheet" href="stylesheets/llibreries/fonts.css">
 	<!-- <link href="https://fonts.googleapis.com/css?family=Rock+Salt|Roboto" rel="stylesheet"> -->
 	<script src="javascripts/llibreries/vue.min.js"></script>
 	<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
 	<!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<link rel="stylesheet" href="stylesheets/style.css">
-    <script src="/javascripts/pagSocis.js"></script>
-    <script src="/javascripts/components.js"></script>
+	<link rel='stylesheet' href='stylesheets/socis.css'>
+	<script src="/javascripts/pagSocis.js"></script>
+	<script src="/javascripts/components.js"></script>
 
 </head>
 
 
 <body>
-    <div id="vueComponent">
-        <div id="caps"></div>
+	<div id="vueComponent">
+		<div id="caps"></div>
 
 
-    </div>
-    <div id="vueSocis">
-            
-        <div id="pagSocis" class="row">
+	</div>
+	<div id="vueSocis">
+
+		<div id="pagSocis" class="row">
 
 
-            <div id="llistaSocis" class="col-md-2">
-                <div id="capsLsocis" class="row">
-                    <div class="retorna" class="col-md-1" v-if="!filter" v-on:click="paginaAnterior">
-                        <i class='fas fa-arrow-left' style="cursor:pointer;"></i>
-                    </div>
-                    <div class="retorna" class="col-md-1" v-if="!filter" v-on:click="paginaSeguent">
-                        <i class='fas fa-arrow-right' style="cursor:pointer;"></i>
-                    </div>
-                    <strong class="col-md-10">Socis Agrupació de Balls Populars</strong>
-                    <div id="afegeixSoci" class="col-md-1" v-on:click="nouSoci">
-                        <i class='fas fa-plus' style="cursor:pointer;"></i>
-                    </div>
+			<div id="llistaSocis" class="col-md-2">
+				<div id="llista">
+					<div id="capsalera" class="row">
+						<strong id="titol" class="col-md-2">Socis</strong>
+						<select class="col-md-3 filtre" id="seleccionaFiltre" >
+							<option>Cognom</option>
+							<option>Nom</option>
+							<option>DNI</option>
 
-                </div>
-                <div id="capsLsocis" class="row">
-                    <select class="col-md-3" id="seleccionaFiltre">
-                        <option>Cognom</option>
-                        <option>Nom</option>
-                        <option>DNI</option>
-                    </select>
-                    <div  class="col-md-4">
-                        <input type="text" class="form-control" id="campText">
-                    </div>
-                    <div  class="col-md-2" >
-                        <button type="button"  class="btn btn-primary" v-on:click="filtre">Cerca </button>
+						</select>
+						<div class="col-md-4">
+							<input type="text" class="form-control filtre"  id="campText">
 
-                    </div>
-                    <div  class="col-md-2" v-if="filter" v-on:click="EliminarFiltre" style="cursor: pointer;">
-                            <i class="fas fa-times-circle"></i>
-                    </div>
-                    <div  class="col-md-2" v-on:click="pagImpresio" style="cursor: pointer;">
-                            <i class="fas fa-print"></i>
-                    </div>
-                </div>
-                
-
-                <div id=lSocis class="row">
-                    <div  id="missatgeError" class="row">
-                        
-                    </div>
-                    <div class=" row soci " style="cursor: pointer;" v-on:click="mostraDetallSoci(soci)" v-for="soci in lsocis">
-                        <div class=" col-md-1" v-if="soci.pagat==false" style="color:red;">
-                                <i class="fas fa-times-circle"></i>
-                        </div>
-                        <div class=" col-md-1" v-if="soci.pagat==true" style="color:greenyellow;">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <div class=" col-md-2">
-                            {{soci.numerosoci}}
-                        </div>
-                        <div class=" col-md-4">
-                            {{soci.nom}} {{soci.cognoms}}
-                        </div>
-                        <div class=" col-md-4">
-                            {{soci.dni}}
-                        </div>
-
-                    </div>
-                </div>
+						</div>
+						<div class="col-md-1">
+							<button type="button" id="boto" class="btn btn-primary " v-on:click="filtre">Cerca </button>
+						</div>
+						<div id="tancaFiltre" class="col-md-1" v-if="filter" style="cursor: pointer;" v-on:click="EliminarFiltre">
+							<i class="fas fa-times-circle "></i>
+						</div>
+						<div id="print"class="col-md-1" v-on:click="pagImpresio">
+								<i class='fas fa-print' style="cursor:pointer;"></i>
+						</div>
 
 
+					</div>
 
-            </div>
+					<div id="capsaleraLlista" class="row">
+						<div class=" col-md-3">
+							<strong>Numero Soci</strong>
+						</div>
+						<div class=" col-md-4">
+							<strong>Nom i Cognom</strong>
+						</div>
+						<div class=" col-md-4">
+							<strong>DNI</strong>
+						</div>
 
-            <div id="detallSoci" class="col-md-6">
-                <div id=sociDetall>
-                    <div id="capsDetallSoci">
-                        <strong style="display: inline-block; width: 60%;">{{sociSeleccionat.nom}} {{sociSeleccionat.cognoms}}</strong>
-                        <div v-on:click="modificasoci" style="cursor: pointer;">
-                                <i class="fas fa-edit"></i>
-                        </div>
-                     
+						<div class="col-md-1" v-on:click="nouSoci">
+							<i class='fas fa-plus' style="cursor:pointer;"></i>
+						</div>
+						
+					</div>
+					<div id=missatgeError></div>
+					<div class=" row soci " style="cursor: pointer;" v-for="soci in lsocis" v-on:click="mostraDetallSoci(soci)">
+						<div class=" col-md-1" v-if="soci.pagat==false" style="color:red;">
+							<i class="fas fa-times-circle"></i>
+						</div>
+						<div class=" col-md-1" v-if="soci.pagat==true" style="color:greenyellow;">
+							<i class="fas fa-check-circle"></i>
+						</div>
+						<div class=" col-md-3">
+							{{soci.numerosoci}}
+						</div>
+						<div class=" col-md-4">
+							{{soci.nom}} {{soci.cognoms}}
+						</div>
+						<div class=" col-md-4">
+							{{soci.dni}}
+						</div>
 
-                    </div>
-                    <div class="row campDetall">
+					</div>
+				</div>
+				<div id="paginacio">
+					<div class="icone" v-on:click="paginaAnterior" >
+						<i class='fas fa-arrow-left'  style="cursor:pointer;"></i>
+					</div>
 
-                        <strong class="col-sm-7">DNI:</strong>
-                        <div>
-                            {{sociSeleccionat.dni}}
-                        </div>
-                    </div>
-                    <div class="row campDetall">
+					<strong>1/1</strong>
 
-                        <strong class="col-sm-7">Numero de Registre:</strong>
-                        <div>
-                            {{sociSeleccionat.numeroregistre}}
-                        </div>
-                    </div>
-                    <div class="row campDetall">
+					<div class="icone" v-on:click="paginaSeguent">
+						<i class='fas fa-arrow-right'  style="cursor:pointer;"></i>
+					</div>
+				</div>
+			</div>
 
-                        <strong class="col-sm-7">Edat:</strong>
-                        <div>
-                            {{sociSeleccionat.edat}}
-                        </div>
-                    </div>
+			<div id="detallSoci" class="col-md-6">
+				<div id=detall>
+					<div id="nomSoci">
+						<strong>{{sociSeleccionat.nom}} {{sociSeleccionat.cognoms}} </strong>
+						<div style="cursor: pointer;" v-on:click="modificasoci">
+							<i class="fas fa-edit"></i>
+						</div>
 
-                    <div class="row campDetall">
+					</div>
+					<div id="cosDetall">
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>DNI</strong>
+							</div>
+							<div class="contingutDetall">
+								{{sociSeleccionat.dni}}
+							</div>
+						</div>
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Numero de Registre</strong>
+							</div>
+							<div class="contingutDetall">
+								{{sociSeleccionat.numeroregistre}}
+							</div>
+						</div>
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Edat</strong>
+							</div>
+							<div class="contingutDetall">
+								{{sociSeleccionat.edat}}
+							</div>
+						</div>
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Telefon:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{sociSeleccionat.telefon}}
+							</div>
+						</div>
 
-                        <strong class="col-sm-7">Email:</strong>
-                        <div>
-                            {{sociSeleccionat.email}}
-                        </div>
-                    </div>
-                    <div class="row campDetall">
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Telefon 2:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{sociSeleccionat.telefon2}}
+							</div>
+						</div>
 
-                        <strong class="col-sm-7">Adreça:</strong>
-                        <div>
-                            {{sociSeleccionat.adreça}}
-                        </div>
-                    </div>
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Email:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{sociSeleccionat.email}}
+							</div>
+						</div>
+						<div class="row">
+							<div class="titolDetall">
+								<strong>Poblacio:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{sociSeleccionat.ciutat}}
+							</div>
 
-                    <div class="row campDetall">
+						</div>
 
-                        <strong class="col-sm-7">Telefon:</strong>
-                        <div>
-                            {{sociSeleccionat.telefon}}
-                        </div>
-                    </div>
-                    <div class="row campDetall">
-                        <strong class="col-sm-7">Telefon2:</strong>
-                        <div>
-                            {{sociSeleccionat.telefon2}}
-                        </div>
-                    </div>
-                    <div class="row campDetall">
-                        <strong class="col-sm-7">Ciutat</strong>
-                        <div>
-                            {{sociSeleccionat.ciutat}}
-                        </div>
-                    </div>
-                    <div class="row campDetall" v-if="sociSeleccionat.nomBall!=null">
-                        <strong class="col-sm-7">Ball</strong>
-                        <div>
-                            {{sociSeleccionat.nomBall}}
-                        </div>
-                    </div>
-                    <div class="row campDetall" v-if="sociSeleccionat.nomBall==null&&sociSeleccionat.nomBall2==null">
-                        <strong class="col-sm-7">Ball</strong>
-                        <div>
-                            No Ballador
-                        </div>
-                    </div>
-                     <div class="row campDetall" v-if="sociSeleccionat.nomBall2!=null">
-                        <strong class="col-sm-7">Ball</strong>
-                        <div>
-                            {{sociSeleccionat.nomBall2}}
-                        </div>
-                    </div> 
-                    <div class="row campDetall" >
-                        <strong class="col-sm-7">Cuota</strong>
-                        <div>
-                            {{sociSeleccionat.datapagament}}
-                        </div>
-                    </div>
-                    <div id="lespera">
-                        <strong>Llistes Espera</strong>
-                        <div id=llistaEspera >
-                            <div class=" row  " v-for="element in lEspera">
-                                <div class=" col-md-4">
-                                    {{element.nom}}
-                                </div>
-                                <div class=" col-md-4">
-                                    {{element.posicio}}  
-                                </div>
-                                <div class=" col-md-4">
-                                    {{element.data}}
-                                </div>
-        
-                            </div>
-                        </div>
-                    </div>
-                    <button v-if="sociSeleccionat.pagat!=true" type="button"  class="btn btn-primary" v-on:click="pagat">Pagat </button>
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Adreça</strong>
+							</div>
+							<div class="contingutDetall">
+								{{sociSeleccionat.adreça}}
+							</div>
+						</div>
+						<div class="row " v-if="sociSeleccionat.nomBall!=null">
+							<div class="titolDetall">
+								<strong>Ball</strong>
+							</div>
+							<div class="contingutDetall">
+								{{sociSeleccionat.nomBall}}
+							</div>
+						</div>
+						<div class="row " v-if="sociSeleccionat.nomBall==null&&sociSeleccionat.nomBall2==null">
+							<div class="titolDetall">
+								<strong>Ball</strong>
+							</div>
+							<div class="contingutDetall">
+								No ballador
+							</div>
+						</div>
+						<div class="row " v-if="sociSeleccionat.nomBall2!=null">
+							<div class="titolDetall">
+								<strong>Ball</strong>
+							</div>
+							<div class="contingutDetall">
+								{{sociSeleccionat.nomBall2}}
+							</div>
+						</div>
 
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="peu"></div>
+						<div id="pagats" v-if="sociSeleccionat.pagat==false">
+								<button type="button" id="botopagats" class="btn btn-primary " v-on:click="pagat">Pagar Cuota </button>
+						</div>
+						<div id="lespera">
+								<strong>Llistes Espera</strong>
+								<div id=capsLespera >
+										<div class=" row  ">
+											<div class=" col-md-4">
+													<strong>Nom Ball</strong>
+											</div>
+											<div class=" col-md-4">
+													<strong>Posicio</strong>
+											</div>
+											<div class=" col-md-4">
+													<strong>Data</strong>
+											</div>
+					
+										</div>
+									</div>
+								<div id=llistaEspera >
+									<div class=" row  " v-for="element in lEspera">
+										<div class=" col-md-4">
+											{{element.nom}}
+										</div>
+										<div class=" col-md-4">
+											{{element.posicio}}  
+										</div>
+										<div class=" col-md-4">
+											{{element.data}}
+										</div>
+				
+									</div>
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id='peu'>
+
+	</div>
 </body>
 
 </html>

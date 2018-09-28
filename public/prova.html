@@ -27,8 +27,8 @@
 	<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
 	<!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<link rel='stylesheet' href='stylesheets/balls.css'>
-	<script src="/javascripts/pagBalls.js"></script>
+	<link rel='stylesheet' href='stylesheets/socis.css'>
+	<script src="/javascripts/pagSocis.js"></script>
 	<script src="/javascripts/components.js"></script>
 
 </head>
@@ -40,76 +40,92 @@
 
 
 	</div>
-	<div id="vuepagBalls">
+	<div id="vueSocis">
 
-		<div id="pagBalls" class="row">
+		<div id="pagSocis" class="row">
 
 
-			<div id="llistaBalls" class="col-md-2">
+			<div id="llistaSocis" class="col-md-2">
 				<div id="llista">
 					<div id="capsalera" class="row">
-						<strong id="titol" class="col-md-2">Balls</strong>
-						<select class="col-md-3" id="seleccionaFiltre">
+						<strong id="titol" class="col-md-2">Socis</strong>
+						<select class="col-md-3 filtre" id="seleccionaFiltre" >
+							<option>Cognom</option>
 							<option>Nom</option>
-
+							<option>DNI</option>
 
 						</select>
 						<div class="col-md-4">
-							<input type="text" class="form-control" id="campText">
+							<input type="text" class="form-control filtre"  id="campText">
 
 						</div>
-						<div class="col-md-2">
-							<button type="button" id="boto" class="btn btn-primary " >Cerca </button>
+						<div class="col-md-1">
+							<button type="button" id="boto" class="btn btn-primary " v-on:click="filtre">Cerca </button>
 						</div>
-						<div id="tancaFiltre" class="col-md-1" v-if="filter" style="cursor: pointer;" >
+						<div id="tancaFiltre" class="col-md-1" v-if="filter" style="cursor: pointer;" v-on:click="EliminarFiltre">
 							<i class="fas fa-times-circle "></i>
 						</div>
+						<div id="print"class="col-md-1" v-on:click="pagImpresio">
+								<i class='fas fa-print' style="cursor:pointer;"></i>
+						</div>
+
 
 					</div>
 
 					<div id="capsaleraLlista" class="row">
+						<div class=" col-md-3">
+							<strong>Numero Soci</strong>
+						</div>
 						<div class=" col-md-4">
-							<strong>Codi Ball</strong>
+							<strong>Nom i Cognom</strong>
 						</div>
-						<div class=" col-md-6">
-							<strong>Nom</strong>
+						<div class=" col-md-4">
+							<strong>DNI</strong>
 						</div>
 
-
-						<div class="col-md-1" v-on:click="nouBall">
+						<div class="col-md-1" v-on:click="nouSoci">
 							<i class='fas fa-plus' style="cursor:pointer;"></i>
 						</div>
-
+						
 					</div>
 					<div id=missatgeError></div>
-					<div class=" row ball " style="cursor: pointer;" v-for="ball in lballs" v-on:click="mostraDetallBall(ball)">
+					<div class=" row soci " style="cursor: pointer;" v-for="soci in lsocis" v-on:click="mostraDetallSoci(soci)">
+						<div class=" col-md-1" v-if="soci.pagat==false" style="color:red;">
+							<i class="fas fa-times-circle"></i>
+						</div>
+						<div class=" col-md-1" v-if="soci.pagat==true" style="color:greenyellow;">
+							<i class="fas fa-check-circle"></i>
+						</div>
+						<div class=" col-md-3">
+							{{soci.numerosoci}}
+						</div>
 						<div class=" col-md-4">
-							{{ball.codi_ball}}
+							{{soci.nom}} {{soci.cognoms}}
 						</div>
-						<div class=" col-md-6">
-							{{ball.nom}}
+						<div class=" col-md-4">
+							{{soci.dni}}
 						</div>
-
 
 					</div>
 				</div>
-
 				<div id="paginacio">
-					<div class="icone">
-						<i class='fas fa-arrow-left' style="cursor:pointer;"></i>
+					<div class="icone" v-on:click="paginaAnterior" >
+						<i class='fas fa-arrow-left'  style="cursor:pointer;"></i>
 					</div>
+
 					<strong>1/1</strong>
-					<div class="icone">
-						<i class='fas fa-arrow-right' style="cursor:pointer;"></i>
+
+					<div class="icone" v-on:click="paginaSeguent">
+						<i class='fas fa-arrow-right'  style="cursor:pointer;"></i>
 					</div>
 				</div>
 			</div>
 
-			<div id="detallBall" class="col-md-6">
+			<div id="detallSoci" class="col-md-6">
 				<div id=detall>
-					<div id="nomBall">
-						<strong>{{ballSeleccionat.nom}}</strong>
-						<div style="cursor: pointer;" v-on:click="modificaball">
+					<div id="nomSoci">
+						<strong>{{sociSeleccionat.nom}} {{sociSeleccionat.cognoms}} </strong>
+						<div style="cursor: pointer;" v-on:click="modificasoci">
 							<i class="fas fa-edit"></i>
 						</div>
 
@@ -117,54 +133,132 @@
 					<div id="cosDetall">
 						<div class="row ">
 							<div class="titolDetall">
-								<strong>Codi ball:</strong>
+								<strong>DNI</strong>
 							</div>
 							<div class="contingutDetall">
-								{{ballSeleccionat.codi_ball}}
+								{{sociSeleccionat.dni}}
 							</div>
 						</div>
 						<div class="row ">
 							<div class="titolDetall">
-								<strong>Numero de participants:</strong>
+								<strong>Numero de Registre</strong>
 							</div>
 							<div class="contingutDetall">
-								{{ballSeleccionat.numparticipants}}
+								{{sociSeleccionat.numeroregistre}}
 							</div>
 						</div>
 						<div class="row ">
 							<div class="titolDetall">
-								<strong>Sexe:</strong>
+								<strong>Edat</strong>
 							</div>
 							<div class="contingutDetall">
-								{{ballSeleccionat.sexe}}
+								{{sociSeleccionat.edat}}
 							</div>
 						</div>
 						<div class="row ">
 							<div class="titolDetall">
-								<strong>Edat Minima :</strong>
+								<strong>Telefon:</strong>
 							</div>
 							<div class="contingutDetall">
-								{{ballSeleccionat.edat_minima}}
+								{{sociSeleccionat.telefon}}
 							</div>
 						</div>
 
 						<div class="row ">
 							<div class="titolDetall">
-								<strong>Edat Maxima:</strong>
+								<strong>Telefon 2:</strong>
 							</div>
 							<div class="contingutDetall">
-								{{ballSeleccionat.edat_maxima}}
+								{{sociSeleccionat.telefon2}}
 							</div>
 						</div>
-						
-							
-							
-						
-						<div id="gestionaBall">
-								<button type="button" id="botoGestiona" class="btn btn-primary " v-on:click="balladors">Gestiona Ball </button>
+
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Email:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{sociSeleccionat.email}}
+							</div>
 						</div>
-					</div>
+						<div class="row">
+							<div class="titolDetall">
+								<strong>Poblacio:</strong>
+							</div>
+							<div class="contingutDetall">
+								{{sociSeleccionat.ciutat}}
+							</div>
+
+						</div>
+
+						<div class="row ">
+							<div class="titolDetall">
+								<strong>Adreça</strong>
+							</div>
+							<div class="contingutDetall">
+								{{sociSeleccionat.adreça}}
+							</div>
+						</div>
+						<div class="row " v-if="sociSeleccionat.nomBall!=null">
+							<div class="titolDetall">
+								<strong>Ball</strong>
+							</div>
+							<div class="contingutDetall">
+								{{sociSeleccionat.nomBall}}
+							</div>
+						</div>
+						<div class="row " v-if="sociSeleccionat.nomBall==null&&sociSeleccionat.nomBall2==null">
+							<div class="titolDetall">
+								<strong>Ball</strong>
+							</div>
+							<div class="contingutDetall">
+								No ballador
+							</div>
+						</div>
+						<div class="row " v-if="sociSeleccionat.nomBall2!=null">
+							<div class="titolDetall">
+								<strong>Ball</strong>
+							</div>
+							<div class="contingutDetall">
+								{{sociSeleccionat.nomBall2}}
+							</div>
+						</div>
+
+						<div id="pagats" v-if="sociSeleccionat.pagat==false">
+								<button type="button" id="botopagats" class="btn btn-primary " v-on:click="pagat">Pagar Cuota </button>
+						</div>
+						<div id="lespera">
+								<strong>Llistes Espera</strong>
+								<div id=capsLespera >
+										<div class=" row  ">
+											<div class=" col-md-4">
+													<strong>Nom Ball</strong>
+											</div>
+											<div class=" col-md-4">
+													<strong>Posicio</strong>
+											</div>
+											<div class=" col-md-4">
+													<strong>Data</strong>
+											</div>
 					
+										</div>
+									</div>
+								<div id=llistaEspera >
+									<div class=" row  " v-for="element in lEspera">
+										<div class=" col-md-4">
+											{{element.nom}}
+										</div>
+										<div class=" col-md-4">
+											{{element.posicio}}  
+										</div>
+										<div class=" col-md-4">
+											{{element.data}}
+										</div>
+				
+									</div>
+								</div>
+							</div>
+					</div>
 				</div>
 			</div>
 		</div>

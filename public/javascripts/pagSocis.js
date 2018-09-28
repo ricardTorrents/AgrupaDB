@@ -115,32 +115,7 @@ window.addEventListener('load',function(){
 							self.lsocis.push(soci)
 						})
 						
-						self.sociSeleccionat=self.lsocis[0]
-					}).then(function(){
-						axios.get(self.baseUrl +'llistaEspera/'+self.sociSeleccionat.dni).then(function(response){
-							self.lEspera=response.data
-							self.lEspera.forEach(function(l){
-								trobat=false
-								i=0
-								
-								while((i<self.lballs.length)&&(trobat==false)){
-									if(self.lballs[i].codi_ball===l.codi_ball){
-										trobat=true
-										
-										l.nom=self.lballs[i].nom
-									}else{
-										i=i+1
-									}
-								}
-								d=new Date(l.data)
-								mes=parseInt(d.getMonth())+1
-								l.data=d.getFullYear()+'-'+mes+'-'+d.getDate()
-								console.log(l.nom)
-		
-							})
-						}).catch(function (error) {
-							console.log(error.message)
-					  })
+						self.mostraDetallSoci(self.lsocis[0])
 					}).catch(function (error) {
 		 				 console.log(error.message)
 					})
@@ -207,6 +182,7 @@ window.addEventListener('load',function(){
 						
 						self.lsocis.push(soci)
 					})
+					
 					if(s.length==0){
 						document.getElementById("missatgeError").innerHTML="No hi ha coincidencies"
 					}else{
@@ -235,7 +211,7 @@ window.addEventListener('load',function(){
 							mes=parseInt(d.getMonth())+1
 							l.data=d.getFullYear()+'-'+mes+'-'+d.getDate()
 							console.log(l.nom)
-	
+	 
 						})
 					}).catch(function (error) {
 						console.log(error.message)

@@ -25,7 +25,7 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
     <!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/musics.css">
     <script src="/javascripts/modificaMusic.js"></script>
     <script src="/javascripts/components.js"></script>
 
@@ -40,8 +40,8 @@
     
     <div id="vueModificaMusic">
        
-        <div id="pagModificaMusic">
-            <div id=FormModificaMusic>
+        <div id="pagModifica">
+            <div id=FormModifica>
                 <div class="form-group">
                     <label for="musicNom">Nom:</label>
                     <input type="text" class="form-control" id="musicNom" v-bind:value="music.nom">
@@ -67,10 +67,10 @@
                     <input type="email" class="form-control" id="musicEmail" v-bind:value="music.email">
                 </div>
                
-            <div id="botomodificaMusic">
-                <button type="button" class="btn btn-primary" v-on:click="cancela">Cancela</button>
-                <button type="button" class="btn btn-primary" v-on:click="modificaMusic">Modifica </button>
-                <div id="eliminaMusic">
+            <div id="botomodifica">
+                <button type="button" class="btn btn-primary b botonsblaus" v-on:click="cancela">Cancela</button>
+                <button type="button" class="btn btn-primary botonsblaus" v-on:click="modificaMusic">Modifica </button>
+                <div id="elimina">
                     <button type="button" class="btn btn-danger" v-on:click="elimina">Elimina Soci</button>
                 </div>
             </div>

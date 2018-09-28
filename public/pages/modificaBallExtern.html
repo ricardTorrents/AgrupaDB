@@ -25,7 +25,7 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
     <!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/ballsExterns.css">
     <script src="/javascripts/modificaBallExtern.js"></script>
     <script src="/javascripts/components.js"></script>
 
@@ -40,8 +40,8 @@
     </div>
     <div id="vueModificaBallExtern">
        
-        <div id="pagModificaBallExtern">
-            <div id=FormModificaBallExtern>
+        <div id="pagModifica">
+            <div id=FormModifica>
                 <div class="form-group">
                     <label for="ballExternNom">Nom:</label>
                     <input type="text" class="form-control" id="ballExternNom" v-bind:value="ballExtern.nom">
@@ -67,10 +67,10 @@
                     <input type="email" class="form-control" id="ballExternEmail" v-bind:value="ballExtern.email">
                 </div>
                
-            <div id="botoModificaBallExtern">
-                <button type="button" class="btn btn-primary" v-on:click="cancela">Cancela</button>
-                <button type="button" class="btn btn-primary" v-on:click="modificaBallExtern">Modifica </button>
-                <div id="eliminaBallExtern">
+            <div id="botoModifica">
+                <button type="button" class="btn btn-primary botonsblaus" v-on:click="cancela">Cancela</button>
+                <button type="button" class="btn btn-primary botonsblaus" v-on:click="modificaBallExtern">Modifica </button>
+                <div id="elimina">
                     <button type="button" class="btn btn-danger" v-on:click="elimina">Elimina Soci</button>
                 </div>
             </div>

@@ -27,7 +27,7 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
     <!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/balls.css">
     <script src="/javascripts/insertaBall.js"></script>
 
     <script src="/javascripts/components.js"></script>
@@ -42,9 +42,9 @@
 
     </div>
     <div id="vueinsertaball">
-        
-        <div id="pagInsertaBall">
-            <div id=FormNouBall>
+
+        <div id="pagInserta">
+            <div id=FormInserta>
                 <div class="form-group">
                     <label for="ballNom">Nom:</label>
                     <input type="text" class="form-control" id="ballNom">
@@ -70,13 +70,18 @@
                     <input type="radio" id="h" name="optradio">Homes</label>
                 <label class="radio-inline">
                     <input type="radio" id="m" name="optradio">Mixte</label>
-            </div>
-            <div id="botoNouSoci">
-                <button type="button" class="btn btn-primary" v-on:click="cancela">Cancela</button>
-                <button type="button" class="btn btn-primary" v-on:click="afegeixBall">Afegeix</button>
+                <div id="botoInserta">
+                    <button type="button" class="btn btn-primary botonsblaus" v-on:click="cancela">Cancela</button>
+                    <button type="button" class="btn btn-primary botonsblaus" v-on:click="afegeixBall">Afegeix</button>
+                </div>
             </div>
 
+
         </div>
+    </div>
+
+    <div id ="peu">
+
     </div>
 </body>
 

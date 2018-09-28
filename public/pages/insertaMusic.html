@@ -25,7 +25,7 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
     <!-- <script src="javascripts/llibreries/axios.min.js"></script> -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/musics.css">
     <script src="/javascripts/insertaMusic.js"></script>
     <script src="/javascripts/components.js"></script>
 
@@ -40,8 +40,8 @@
     </div>
     <div id="vueInsertaMusic">
        
-        <div id="pagInsertaMusic">
-            <div id=FormInsertaMusic>
+        <div id="pagInserta">
+            <div id=FormInserta>
                 <div class="form-group">
                     <label for="musicNom">Nom:</label>
                     <input type="text" class="form-control" id="musicNom" v-bind:value="music.nom">
@@ -72,9 +72,9 @@
                   
                 </select>
                
-            <div id="botoInsertaMusic">
-                <button type="button" class="btn btn-primary" v-on:click="cancela">Cancela</button>
-                <button type="button" class="btn btn-primary" v-on:click="inserta">Modifica </button>
+            <div id="botoInserta">
+                <button type="button" class="btn btn-primary botonsblaus" v-on:click="cancela">Cancela</button>
+                <button type="button" class="btn btn-primary botonsblaus" v-on:click="inserta">Inserta </button>
                
             </div>
 

@@ -48,30 +48,30 @@
                 </div>
                 <div class="form-group">
                     <label for="ballExternNparticipants">Numero Participants:</label>
-                    <input type="text" class="form-control" id="ballExternNparticipants" v-bind:value="ballExtern.nparticipants">
+                    <input type="text" class="form-control textCamp" id="ballExternNparticipants" v-bind:value="ballExtern.nparticipants">
                 </div>
                 <div class="form-group">
                     <label for="ballExternTelefon">Telefon:</label>
-                    <input type="text" class="form-control" id="ballExternTelefon" v-bind:value="ballExtern.telefon"> </div>
+                    <input type="text" class="form-control textCamp" id="ballExternTelefon" v-bind:value="ballExtern.telefon"> </div>
                 <div class="form-group">
                     <label for="ballExternTelefon2">Telefon 2:</label>
-                    <input type="text" class="form-control" id="ballExternTelefon2" v-bind:value="ballExtern.telefon2">
+                    <input type="text" class="form-control textCamp" id="ballExternTelefon2" v-bind:value="ballExtern.telefon2">
                 </div>
                 <div class="form-group">
                     <label for="ballExternPoblacio">Ciutat:</label>
-                    <input type="text" class="form-control" id="ballExternPoblacio" v-bind:value="ballExtern.poblacio">
+                    <input type="text" class="form-control textCamp" id="ballExternPoblacio" v-bind:value="ballExtern.poblacio">
                 </div>
 
                 <div class="form-group">
                     <label for="ballExternEmail">Adreça Electronica:</label>
-                    <input type="email" class="form-control" id="ballExternEmail" v-bind:value="ballExtern.email">
+                    <input type="email" class="form-control textCamp" id="ballExternEmail" v-bind:value="ballExtern.email">
                 </div>
                
             <div id="botoModifica">
                 <button type="button" class="btn btn-primary botonsblaus" v-on:click="cancela">Cancela</button>
                 <button type="button" class="btn btn-primary botonsblaus" v-on:click="modificaBallExtern">Modifica </button>
                 <div id="elimina">
-                    <button type="button" class="btn btn-danger" v-on:click="elimina">Elimina Soci</button>
+                    <button type="button" class="btn btn-danger botoVermell" v-on:click="elimina">Elimina Soci</button>
                 </div>
             </div>
 

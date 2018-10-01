@@ -45,21 +45,21 @@
             <div id=FormModifica>
                 <div class="form-group">
                     <label for="ballNom">Nom:</label>
-                    <input type="text" class="form-control" id="ballNom" v-bind:value="ball.nom">
+                    <input type="text" class="form-control textCamp" id="ballNom" v-bind:value="ball.nom">
                 </div>
                 <div class="form-group">
                     <label for="ballParticipants">Participants:</label>
-                    <input type="text" class="form-control" id="ballParticipants" v-bind:value="ball.numparticipants">
+                    <input type="text" class="form-control textCamp" id="ballParticipants" v-bind:value="ball.numparticipants">
                 </div>
                 <div class="form-group">
                     <label for="ballEdatMinima">Edat Minima:</label>
-                    <input type="text" class="form-control" id="ballEdatMinima" v-bind:value="ball.edat_minima">
+                    <input type="text" class="form-control textCamp" id="ballEdatMinima" v-bind:value="ball.edat_minima">
                 </div>
 
 
                 <div class="form-group">
                     <label for="ballEdatMaxima">Edat Maxima:</label>
-                    <input type="text" class="form-control" id="ballEdatMaxima" v-bind:value="ball.edat_maxima">
+                    <input type="text" class="form-control textCamp" id="ballEdatMaxima" v-bind:value="ball.edat_maxima">
                 </div>
 
                 <label>Sexe:</label>
@@ -74,7 +74,7 @@
                     <button type="button" class="btn btn-primary botonsblaus" v-on:click="modificaBall">Modifica
                     </button>
                     <div id="elimina">
-                        <button type="button" class="btn btn-danger" v-on:click="elimina">Elimina Soci</button>
+                        <button type="button" class="btn btn-danger botoVermell" v-on:click="elimina">Elimina Soci</button>
                     </div>
                 </div>
             </div>

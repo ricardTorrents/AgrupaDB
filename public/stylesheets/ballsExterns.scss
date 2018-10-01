@@ -4,6 +4,7 @@ $colorAgrupa:#2D57B4;
     width: 100vw;
     padding: 0%;
     margin: 0%;
+    overflow-y: hidden;
     #llistaBallsExterns{
         width: 48%;
         height: 75vh;
@@ -17,20 +18,32 @@ $colorAgrupa:#2D57B4;
                 height: 7%;
                 padding: 0.5%;
                 border-bottom: 5px solid $colorAgrupa;
+                .filtre{
+                    
+                    font-size: 1.5vh;
+                    height: 3vh;
+                }
                 #titol{
                     padding: 0.5%;
                     text-align:center;
                     font-style: oblique;
-                    font-size: 20px;
+                    font-size: 2vh;
                     color:$colorAgrupa;
                 }
                 #boto{
                     background-color:$colorAgrupa;
+                    height: 3vh;
+
+                    text-align: center;
+                    padding: 0.5%;
+                    padding-left: 1%;
+                    padding-right: 1%;
+                    font-size: 1.5vh;
                 }
                 #tancaFiltre{
                     padding: 0.2%;
                     color:red;
-                    font-size: 25px;
+                    font-size: 3vh;
                     text-align: center
                 }
             }
@@ -52,7 +65,7 @@ $colorAgrupa:#2D57B4;
         }
         #paginacio{
             height:5%;
-            font-size: 20px;
+            font-size: 2vh;
             text-align: center;
             color:$colorAgrupa;
             .icone{
@@ -70,17 +83,19 @@ $colorAgrupa:#2D57B4;
            
             #nomBallExtern{
                 text-align: center;
-                font-size: 25px;
+                font-size: 3vh;
                 padding-top: 5%;
             }
             #cosDetall{
                  padding: 15%;
-                 font-size: 20px;
+                 padding-top: 5%;
+                 font-size: 1.5vh;
                 .titolDetall{
                     margin-top: 1%;
                     display: inline-block;
                     width: 50%;
                     text-align: left;
+                    font-size: 1.5vh;
                 
                     
                 }
@@ -89,6 +104,8 @@ $colorAgrupa:#2D57B4;
                     display: inline-block;
                     width: 30%;
                     text-align: right;
+                    font-size: 1.5vh;
+            
                     
                 }
 
@@ -104,9 +121,11 @@ $colorAgrupa:#2D57B4;
     width: 100vw;
     padding: 0%;
     margin: 0%;
+    overflow-y: hidden;
     #FormModifica{
         width: 50%;
-        height: 75vh;
+        height: 70vh;
+        font-size: 1.5vh;
         margin-left: 25%;
         margin-right: 25%;
         margin-top: 2%;
@@ -114,6 +133,10 @@ $colorAgrupa:#2D57B4;
         padding-left: 2%;
         padding-right: 2%;
         border:2px solid #2D57B4;
+        .textCamp{
+            font-size: 1.5vh;
+                    height: 3vh;
+        }
         #botomodifica{
             
             
@@ -125,14 +148,28 @@ $colorAgrupa:#2D57B4;
             
             .botonsblaus{
                 background-color: $colorAgrupa; 
+                background-color:$colorAgrupa;
+                height: 3vh;
+                text-align: center;
+                padding: 0.5%;
+                padding-left: 1%;
+                padding-right: 1%;
+                font-size: 1.5vh;
             }
 
             width: 100%;
             #elimina{
                 padding: 0%;
                 padding-top: 1%;
-                button{
+                .botoVermell{
                     width: 50%;
+                    height: 3vh;
+                    text-align: center;
+                    padding: 0.5%;
+                    padding-left: 1%;
+                    padding-right: 1%;
+                    font-size: 1.5vh;
+
                 }
             }
         }
@@ -140,16 +177,17 @@ $colorAgrupa:#2D57B4;
     }
     
 }
-
 #pagInserta{
 	
     height: 79vh;
     width: 100vw;
     padding: 0%;
     margin: 0%;
+    overflow-y: hidden;
     #FormInserta{
         width: 50%;
-        height: 75vh;
+        height: 70vh;
+        font-size: 1.5vh;
         margin-left: 25%;
         margin-right: 25%;
         margin-top: 2%;
@@ -157,7 +195,12 @@ $colorAgrupa:#2D57B4;
         padding-left: 2%;
         padding-right: 2%;
         border:2px solid #2D57B4;
+        .textCamp{
+            font-size: 1.5vh;
+                    height: 3vh;
+        }
         #botoInserta{
+            
             
             
             text-align: center;
@@ -168,16 +211,18 @@ $colorAgrupa:#2D57B4;
             
             .botonsblaus{
                 background-color: $colorAgrupa; 
+                background-color:$colorAgrupa;
+                height: 3vh;
+                text-align: center;
+                padding: 0.5%;
+                padding-left: 1%;
+                padding-right: 1%;
+                font-size: 1.5vh;
             }
 
+    
             width: 100%;
-            #elimina{
-                padding: 0%;
-                padding-top: 1%;
-                button{
-                    width: 50%;
-                }
-            }
+            
         }
         
     }

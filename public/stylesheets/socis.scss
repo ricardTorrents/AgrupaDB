@@ -1,10 +1,6 @@
 $colorAgrupa:#2D57B4;
 #pagSocis{
-    height: 79vh;
-    width: 100vw;
-    padding: 0%;
-    margin: 0%;
-    overflow-y: hidden;
+
     #llistaSocis{
         width: 48%;
         height: 75vh;
@@ -19,29 +15,37 @@ $colorAgrupa:#2D57B4;
                 padding: 0.5%;
                 border-bottom: 5px solid $colorAgrupa;
                 .filtre{
-                    height: 2.5vh;
-                    margin-top:0.3vh; 
+                    
+                    font-size: 1.5vh;
+                    height: 3vh;
                 }
                 #titol{
                     padding: 0.5%;
                     text-align:center;
                     font-style: oblique;
-                    font-size: 20px;
+                    font-size: 2vh;
                     color:$colorAgrupa;
                 }
                 #boto{
                     background-color:$colorAgrupa;
+                    height: 3vh;
+
+                    text-align: center;
+                    padding: 0.5%;
+                    padding-left: 1%;
+                    padding-right: 1%;
+                    font-size: 1.5vh;
                 }
                 #tancaFiltre{
-                    padding: 0.2%;
+                    padding: 0.2%; 
                     color:red;
-                    font-size: 25px;
+                    font-size: 3vh;
                     text-align: center
                 }
                 #print{
                     padding: 0.2%;
                     
-                    font-size: 25px;
+                    font-size: 3vh;
                     text-align: center
                 }
             }
@@ -63,7 +67,7 @@ $colorAgrupa:#2D57B4;
         }
         #paginacio{
             height:5%;
-            font-size: 20px;
+            font-size: 2vh;
             text-align: center;
             color:$colorAgrupa;
             .icone{
@@ -81,7 +85,7 @@ $colorAgrupa:#2D57B4;
            
             #nomSoci{
                 text-align: center;
-                font-size: 25px;
+                font-size: 3vh;
                 padding-top: 5%;
             }
             #cosDetall{
@@ -93,6 +97,7 @@ $colorAgrupa:#2D57B4;
                     display: inline-block;
                     width: 50%;
                     text-align: left;
+                    font-size: 1.5vh;
                 
                     
                 }
@@ -101,6 +106,7 @@ $colorAgrupa:#2D57B4;
                     display: inline-block;
                     width: 30%;
                     text-align: right;
+                    font-size: 1.5vh;
             
                     
                 }
@@ -110,7 +116,8 @@ $colorAgrupa:#2D57B4;
                 margin-top:2%; 
                 text-align: center;
                 #botopagats{
-                    width: 15%;
+                    padding: 0%;
+                    width: 30%;
                     height: 3vh;
                     font-size: 1.5vh;
                     background-color: $colorAgrupa;
@@ -118,7 +125,7 @@ $colorAgrupa:#2D57B4;
             }
             #lespera{
                 margin-top: 5%;
-                
+                font-size: 1.5vh;
                 padding: 2%;
                 border: 2.5px solid $colorAgrupa;
                 height: 20vh;

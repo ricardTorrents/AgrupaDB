@@ -50,7 +50,16 @@ window.addEventListener('load',function(){
 			        let naixement=new Date(self.soci.data_naixement)
 			        self.edat=avui.getFullYear()-naixement.getFullYear()
                    console.log(d.getMonth())
-                  self.soci.data_naixement=d.getFullYear()+'-'+d.getMonth()+1+'-'+d.getDate()
+                  let mes=(parseInt(d.getMonth())+parseInt(1))
+                  if(mes<10){
+                      mes='0'+mes
+                  }
+                  let dia=parseInt(d.getDate())
+                  if(dia<10){
+                      dia='0'+dia
+                  }
+                  self.soci.data_naixement=d.getFullYear()+'-'+mes+'-'+dia
+                  console.log(self.soci.data_naixement)
                   if(self.soci.sexe=='D'){
                       document.getElementById("d").checked="checked"
                   }else{

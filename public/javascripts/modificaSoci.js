@@ -177,7 +177,7 @@ window.addEventListener('load',function(){
                                 dni:self.soci.dni,
                                 codi_ball:self.lballs[i].codi_ball
                             }).then(function(response,body){
-                                location.replace(this.url+'/socis?'+self.num)
+                                location.replace(self.url+'/socis?'+self.num)
                             }).catch(function (error) {
                                 console.log(error.message)
             
